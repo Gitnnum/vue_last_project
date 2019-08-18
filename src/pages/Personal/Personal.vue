@@ -89,9 +89,9 @@
   export default {
     data () {
       return {
-        isLoginMain:false,  //是否显示登陆的首页
+        isLoginMain:true,  //是否显示登陆的首页
         isLoginByPhone:false,
-        isLoginByEmil:true
+        isLoginByEmil:false
       }
     }
   }
@@ -101,6 +101,7 @@
   .loginWrap
     width 100%
     height 100%
+    background #ffffff
     .login_header
       .header
         padding 0 10px
@@ -117,7 +118,6 @@
             height 27px
     .login
       background #F2F5F4
-      padding-bottom 300px 
       .loginImg
         position relative
         width 100%
@@ -155,6 +155,7 @@
             background #DD1A21
             color #ffffff
     .loginPhone
+      padding-bottom 250px
       .image
         padding-top 40px
         height 32px
@@ -229,6 +230,7 @@
         font-size 14px
         color #333
     .loginEmil
+      padding-bottom 250px
       .image
         padding-top 40px
         height 32px

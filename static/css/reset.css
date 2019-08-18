@@ -90,7 +90,10 @@ input {
   font-weight: normal;
   vertical-align: baseline;
 }
-
+body{
+  background: #f4f4f4
+}
+  
 /* HTML5 display-role reset for older browsers */
 article,
 aside,

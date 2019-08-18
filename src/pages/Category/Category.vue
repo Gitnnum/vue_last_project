@@ -6,7 +6,7 @@
       </div>
       <div class="line"></div>
       <div class="bottom">
-        <div class="nav">
+        <div class="nav" ref="nav">
           <ul class="navList">
             <li class="active">推荐专区</li>
             <li>夏凉专区</li>
@@ -17,16 +17,32 @@
             <li>推荐专区</li>
             <li>推荐专区</li>
             <li>全球特色</li>
+            <li>爆品专区</li>
             <li>推荐专区</li>
             <li>推荐专区</li>
             <li>推荐专区</li>
+            <li>推荐专区</li>
+            <li>推荐专区</li>
+            <li>全球特色</li>
           </ul>
         </div>
-        <div class="content">
-          <div class="img">
-            <a href="javaScript:;">
-              <img src="https://yanxuan.nosdn.127.net/5b4ca33a0205482398006405c1db15e8.jpg?imageView&thumbnail=0x196" alt="">
-            </a>
+        <!-- 第一种模板 -->
+        <div class="content" v-show="isContent">
+          <div class="swiper-container">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <a href="javaScript:;">
+                  <img src="https://yanxuan.nosdn.127.net/6b4e9df61f124c2eb18f764fdc957255.jpg?imageView&quality=75&thumbnail=0x196" alt="banner">
+                </a>
+              </div>
+              <div class="swiper-slide">
+                <a href="javaScript:;">
+                  <img src="https://yanxuan.nosdn.127.net/99818d29b6d1eb03477ba2874a119d6d.jpg?imageView&quality=75&thumbnail=0x196" alt="banner">
+                </a>
+              </div>
+            </div>
+            <!-- 如果需要分页器 -->
+            <div class="swiper-pagination"></div>
           </div>
           <ul class="list">
             <li>
@@ -67,12 +83,94 @@
             </li>
           </ul>
         </div>
+        <!-- 第二种模板 -->
+        <div class="contentOther" v-show="!isContent">
+          <div class="swiper-container">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <a href="javaScript:;">
+                  <img src="https://yanxuan.nosdn.127.net/6b4e9df61f124c2eb18f764fdc957255.jpg?imageView&quality=75&thumbnail=0x196" alt="banner">
+                </a>
+              </div>
+              <div class="swiper-slide">
+                <a href="javaScript:;">
+                  <img src="https://yanxuan.nosdn.127.net/99818d29b6d1eb03477ba2874a119d6d.jpg?imageView&quality=75&thumbnail=0x196" alt="banner">
+                </a>
+              </div>
+            </div>
+            <!-- 如果需要分页器 -->
+            <div class="swiper-pagination"></div>
+          </div>
+          <div class="categoryBottom">
+            <div class="categoryTitle">童装</div>
+            <ul class="list">
+              <li>
+                <a href="javaScript:;">
+                  <img src="https://yanxuan.nosdn.127.net/c117ea2f1c4d978eb1f310d6d9ec3226.png?imageView&quality=85&thumbnail=144x144" alt="">
+                  <span>员工精选好货</span>
+                </a>
+              </li>
+              <li>
+                <a href="javaScript:;">
+                  <img src="https://yanxuan.nosdn.127.net/c117ea2f1c4d978eb1f310d6d9ec3226.png?imageView&quality=85&thumbnail=144x144" alt="">
+                  <span>员工精选好货</span>
+                </a>
+              </li>
+              <li>
+                <a href="javaScript:;">
+                  <img src="https://yanxuan.nosdn.127.net/c117ea2f1c4d978eb1f310d6d9ec3226.png?imageView&quality=85&thumbnail=144x144" alt="">
+                  <span>员工精选好货</span>
+                </a>
+              </li>
+              <li>
+                <a href="javaScript:;">
+                  <img src="https://yanxuan.nosdn.127.net/c117ea2f1c4d978eb1f310d6d9ec3226.png?imageView&quality=85&thumbnail=144x144" alt="">
+                  <span>员工精选好货</span>
+                </a>
+              </li>
+              <li>
+                <a href="javaScript:;">
+                  <img src="https://yanxuan.nosdn.127.net/c117ea2f1c4d978eb1f310d6d9ec3226.png?imageView&quality=85&thumbnail=144x144" alt="">
+                  <span>员工精选好货</span>
+                </a>
+              </li>
+              <li>
+                <a href="javaScript:;">
+                  <img src="https://yanxuan.nosdn.127.net/c117ea2f1c4d978eb1f310d6d9ec3226.png?imageView&quality=85&thumbnail=144x144" alt="">
+                  <span>员工精选好货</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
+  import BScroll from 'better-scroll'
+  import Swiper from 'swiper'
   export default {
+    data () {
+      return {
+        isContent:false // 准备工作先显示第一个模板
+      }
+    },
+    mounted () {
+      var mySwiper = new Swiper ('.swiper-container', {
+        loop: true, // 循环模式选项
+        
+        // 如果需要分页器
+        pagination: {
+          el: '.swiper-pagination',
+        }
+      })
+      new BScroll(this.$refs.nav,{
+        click:true,
+        scrollX:false,
+        scrollY:true
+      })
+    }
   }
 </script>
 
@@ -99,19 +197,22 @@
     .bottom
       display flex
       width 100%
+      height 556px
+      overflow hidden
       .nav
+        flex 0 0 auto
         padding 20px 0
         height 100%
         width 25%
         .navList
           font-size 14px
+          overflow hidden
           li
             position relative
             padding 5px 0
             margin-top 20px
             width 100%
             text-align center
-            border-left 2px sliod #f40
             &:first-child
               margin-top 0px
             &.active
@@ -127,12 +228,17 @@
       .content
         padding-right 20px
         width 75%
-        .img
-          width 100%
-          height 100px
-          img 
-            width 100%
-            height 100px
+        .swiper-container
+          .swiper-wrapper
+            .swiper-slide
+              a
+                img 
+                  width 100%
+                  height 120px
+          /deep/ .swiper-pagination-bullet
+            width 20px
+            height 2px
+            background #ffffff
         .list
           display flex
           flex-wrap wrap
@@ -146,4 +252,40 @@
             span 
               font-size 12px
               color #333
+      .contentOther
+        padding-right 20px
+        width 75%
+        .swiper-container
+          .swiper-wrapper
+            .swiper-slide
+              a
+                img 
+                  width 100%
+                  height 120px
+          /deep/ .swiper-pagination-bullet
+            width 20px
+            height 2px
+            background #ffffff
+        .categoryBottom
+          margin-top 10px
+          .categoryTitle
+            font-size 14px
+            font-weight bold
+            color #333
+            padding-left 8px
+            padding-bottom 10px
+            border-bottom 1px solid #eee
+          .list
+            display flex
+            flex-wrap wrap
+            li
+              width 72px
+              margin-right 10px
+              margin-left 5px
+              img 
+                width 72px
+                height 72px
+              span 
+                font-size 12px
+                color #333
 </style>

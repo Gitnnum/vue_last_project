@@ -1155,6 +1155,7 @@
           height 20px
           line-height 16px
           font-size 12px
+          color #b4282d
           border 1px solid #b4282d
           border-radius 4px
           background-color transparent
