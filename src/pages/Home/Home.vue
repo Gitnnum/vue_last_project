@@ -11,8 +11,8 @@
         </div>
         <button class="login">登录</button>
       </div>
-      <div class="tabWrapper">
-        <ul class="nav" v-show="!isShow" ref="homeNav">
+      <div class="tabWrapper" ref="homeNav">
+        <ul class="nav" v-show="!isShow" >
           <li class="active">推荐</li>
           <li>居家生活</li>
           <li>服饰鞋包</li>
@@ -36,7 +36,7 @@
           <li>全球特色</li>
         </ul>
         <div class="more" :class="{on:isShow}" @click="isShow = !isShow">
-          <i class="iconfont icon-jiantou-copy-copy"></i>
+            <div class="icon"><i class="iconfont icon-jiantou-copy-copy"></i> </div> 
         </div>
       </div>  
     </div>
@@ -599,6 +599,462 @@
           </li>
         </ul>
       </div>
+      <!-- 专题精选 -->
+      <div class="topics">
+        <div class="title">
+          <span>专题精选</span>
+          <span class="more">更多></span>
+        </div>
+        <div class="container" ref="container" >
+          <ul class="topicList" >
+            <li class="topicItem">
+              <a href="javascript:;">
+                <img src="https://yanxuan.nosdn.127.net/d92e4fa96f4c65e3a3f135d430c459ec.jpg?imageView&thumbnail=575y322&enlarge=1&quality=75" alt="">
+              </a>
+              <div class="info">
+                <h4>直男们有救了！严选手把手教你, 送给女生的七夕怎么挑~</h4>
+              </div>
+              <p>女士精选礼物大赏</p>
+            </li>
+            <li class="topicItem">
+              <a href="javascript:;">
+                <img src="https://yanxuan.nosdn.127.net/bd2b2c7a026a9b1e00d2bae2907789c1.jpg?imageView&thumbnail=575y322&enlarge=1&quality=75" alt="">
+              </a>
+              <div class="info">
+                <h4>直男们有救了！严选手把手教你, 送给女生的七夕怎么挑~</h4>
+              </div>  
+              <p>女士精选礼物大赏</p>
+            </li>
+            <li class="topicItem">
+              <a href="javascript:;">
+                <img src="https://yanxuan.nosdn.127.net/3da981b031a4db90e21e54147a5fb863.jpg?imageView&thumbnail=575y322&enlarge=1&quality=75" alt="">
+              </a>
+              <div class="info">
+                <h4>每天在用的纸巾, 你会留意原料吗？原生木浆纸巾更安全~</h4>
+              </div>
+              <p>无需比对品质，只用挑选规格</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!-- 众筹 -->
+      <div class="zhongchou">
+        <div class="title">
+          <span>众筹</span>
+          <span class="more">更多></span>
+        </div>
+        <div class="top">
+          <a href="javaScript:;">
+            <div class="image">
+              <img src="https://yanxuan.nosdn.127.net/721fd65889559e3ceff651c81c18685a.png?imageView&thumbnail=210x210&quality=75" alt="">
+            </div>
+            <div class="info">
+              <p class="info_one">来自地心的礼物</p>
+              <p class="price">￥<span>123</span>起</p>
+              <div class="progressWrap">
+                <div class="progres"></div>
+                <p class="rate">9%</p>
+              </div>
+              <p class="info_last">6人支持</p>
+            </div>
+          </a>
+        </div>
+        <div class="bottom">
+          <a href="javaScript:;">
+            <div class="image">
+              <img src="https://yanxuan.nosdn.127.net/71134f6fcdefe050c24031d26d02fbad.png?imageView&thumbnail=210x210&quality=75" alt="">
+            </div>
+            <div class="info">
+              <p class="info_one">一把七亿岁的石瓢壶</p>
+              <p class="price">￥<span>123</span>起</p>
+              <div class="progressWrap">
+                <div class="progres"></div>
+                <p class="rate">399%</p>
+              </div>
+              <p class="info_last">194人已支持</p>
+            </div>
+          </a>
+        </div>
+      </div>
+      <!-- 分类滑动模块 -->
+      <div class="categoryWrap">
+        <div class="categoryModule">
+          <div class="bigImage">
+            <a href="javaScript:;">
+              <img src ="https://yanxuan.nosdn.127.net/874cc79fd5f7e13eac10e1dcc9fe6c92.jpg?imageView&thumbnail=750x0&quality=75"/>
+            </a>
+          </div>
+          <div class="shopWrapper" ref="shopWrapper1">
+            <ul class="shopList">
+              <li class="shopListItem">
+                <a href="javaScript:;">
+                  <img src="https://yanxuan-item.nosdn.127.net/d9376c059ce15a774199e2cedc5a8d63.png?imageView&quality=65&thumbnail=330x330" alt="">
+                </a>
+                <div class="info">
+                    <span class="words">泰国制造，镜片优选</span>
+                    <p class="price">￥12</p>
+                </div>
+              </li>
+              <li class="shopListItem">
+                <a href="javaScript:;">
+                  <img src="https://yanxuan-item.nosdn.127.net/89ea5ccc1e8e09912b17c18005b6f704.png?imageView&quality=65&thumbnail=330x330" alt="">
+                  <div class="info">
+                    <span class="words">泰国制造，镜片优选</span>
+                    <p class="price">￥12</p>
+                  </div>
+                </a>
+              </li>
+              <li class="shopListItem">
+                <a href="javaScript:;">
+                  <img src="https://yanxuan-item.nosdn.127.net/d9376c059ce15a774199e2cedc5a8d63.png?imageView&quality=65&thumbnail=330x330" alt="">
+                </a>
+                <div class="info">
+                    <span class="words">泰国制造，镜片优选</span>
+                    <p class="price">￥12</p>
+                </div>
+              </li>
+              <li class="shopListItem">
+                <a href="javaScript:;">
+                  <img src="https://yanxuan-item.nosdn.127.net/89ea5ccc1e8e09912b17c18005b6f704.png?imageView&quality=65&thumbnail=330x330" alt="">
+                </a>
+                <div class="info">
+                  <span class="words">泰国制造，镜片优选</span>
+                  <p class="price">￥12</p>
+                </div>
+              </li>
+              <li class="shopListItem">
+                <a href="javaScript:;">
+                  <img src="https://yanxuan-item.nosdn.127.net/d9376c059ce15a774199e2cedc5a8d63.png?imageView&quality=65&thumbnail=330x330" alt="">
+                </a>
+                <div class="info">
+                    <span class="words">泰国制造，镜片优选</span>
+                    <p class="price">￥12</p>
+                </div>
+              </li>
+              <li class="shopListItem">
+                <a href="javaScript:;">
+                  <img src="https://yanxuan-item.nosdn.127.net/89ea5ccc1e8e09912b17c18005b6f704.png?imageView&quality=65&thumbnail=330x330" alt="">
+                </a>
+                <div class="info">
+                  <span class="words">泰国制造，镜片优选</span>
+                  <p class="price">￥12</p>
+                </div>
+              </li>
+              <li class="shopListItem">
+                <span>
+                  <a href="javaScript:;">
+                    查看更多>
+                  </a>
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="categoryModule">
+          <div class="bigImage">
+            <a href="javaScript:;">
+              <img src ="https://yanxuan.nosdn.127.net/4b09ac57ed87b992e40aad42c197fec6.jpg?imageView&thumbnail=750x0&quality=75"/>
+            </a>
+          </div>
+          <div class="shopWrapper" ref="shopWrapper2">
+            <ul class="shopList">
+              <li class="shopListItem">
+                <a href="javaScript:;">
+                  <img src="https://yanxuan-item.nosdn.127.net/d9376c059ce15a774199e2cedc5a8d63.png?imageView&quality=65&thumbnail=330x330" alt="">
+                </a>
+                <div class="info">
+                    <span class="words">泰国制造，镜片优选</span>
+                    <p class="price">￥12</p>
+                </div>
+              </li>
+              <li class="shopListItem">
+                <a href="javaScript:;">
+                  <img src="https://yanxuan-item.nosdn.127.net/89ea5ccc1e8e09912b17c18005b6f704.png?imageView&quality=65&thumbnail=330x330" alt="">
+                  <div class="info">
+                    <span class="words">泰国制造，镜片优选</span>
+                    <p class="price">￥12</p>
+                  </div>
+                </a>
+              </li>
+              <li class="shopListItem">
+                <a href="javaScript:;">
+                  <img src="https://yanxuan-item.nosdn.127.net/d9376c059ce15a774199e2cedc5a8d63.png?imageView&quality=65&thumbnail=330x330" alt="">
+                </a>
+                <div class="info">
+                    <span class="words">泰国制造，镜片优选</span>
+                    <p class="price">￥12</p>
+                </div>
+              </li>
+              <li class="shopListItem">
+                <a href="javaScript:;">
+                  <img src="https://yanxuan-item.nosdn.127.net/89ea5ccc1e8e09912b17c18005b6f704.png?imageView&quality=65&thumbnail=330x330" alt="">
+                </a>
+                <div class="info">
+                  <span class="words">泰国制造，镜片优选</span>
+                  <p class="price">￥12</p>
+                </div>
+              </li>
+              <li class="shopListItem">
+                <a href="javaScript:;">
+                  <img src="https://yanxuan-item.nosdn.127.net/d9376c059ce15a774199e2cedc5a8d63.png?imageView&quality=65&thumbnail=330x330" alt="">
+                </a>
+                <div class="info">
+                    <span class="words">泰国制造，镜片优选</span>
+                    <p class="price">￥12</p>
+                </div>
+              </li>
+              <li class="shopListItem">
+                <a href="javaScript:;">
+                  <img src="https://yanxuan-item.nosdn.127.net/89ea5ccc1e8e09912b17c18005b6f704.png?imageView&quality=65&thumbnail=330x330" alt="">
+                </a>
+                <div class="info">
+                  <span class="words">泰国制造，镜片优选</span>
+                  <p class="price">￥12</p>
+                </div>
+              </li>
+              <li class="shopListItem">
+                <span>
+                  <a href="javaScript:;">
+                    查看更多>
+                  </a>
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="categoryModule">
+          <div class="bigImage">
+            <a href="javaScript:;">
+              <img src ="https://yanxuan.nosdn.127.net/66dd8ce62ee704ecec6b06e494af95c1.jpg?imageView&thumbnail=750x0&quality=75"/>
+            </a>
+          </div>
+          <div class="shopWrapper" ref="shopWrapper3">
+            <ul class="shopList">
+              <li class="shopListItem">
+                <a href="javaScript:;">
+                  <img src="https://yanxuan-item.nosdn.127.net/d9376c059ce15a774199e2cedc5a8d63.png?imageView&quality=65&thumbnail=330x330" alt="">
+                </a>
+                <div class="info">
+                    <span class="words">泰国制造，镜片优选</span>
+                    <p class="price">￥12</p>
+                </div>
+              </li>
+              <li class="shopListItem">
+                <a href="javaScript:;">
+                  <img src="https://yanxuan-item.nosdn.127.net/89ea5ccc1e8e09912b17c18005b6f704.png?imageView&quality=65&thumbnail=330x330" alt="">
+                  <div class="info">
+                    <span class="words">泰国制造，镜片优选</span>
+                    <p class="price">￥12</p>
+                  </div>
+                </a>
+              </li>
+              <li class="shopListItem">
+                <a href="javaScript:;">
+                  <img src="https://yanxuan-item.nosdn.127.net/d9376c059ce15a774199e2cedc5a8d63.png?imageView&quality=65&thumbnail=330x330" alt="">
+                </a>
+                <div class="info">
+                    <span class="words">泰国制造，镜片优选</span>
+                    <p class="price">￥12</p>
+                </div>
+              </li>
+              <li class="shopListItem">
+                <a href="javaScript:;">
+                  <img src="https://yanxuan-item.nosdn.127.net/89ea5ccc1e8e09912b17c18005b6f704.png?imageView&quality=65&thumbnail=330x330" alt="">
+                </a>
+                <div class="info">
+                  <span class="words">泰国制造，镜片优选</span>
+                  <p class="price">￥12</p>
+                </div>
+              </li>
+              <li class="shopListItem">
+                <a href="javaScript:;">
+                  <img src="https://yanxuan-item.nosdn.127.net/d9376c059ce15a774199e2cedc5a8d63.png?imageView&quality=65&thumbnail=330x330" alt="">
+                </a>
+                <div class="info">
+                    <span class="words">泰国制造，镜片优选</span>
+                    <p class="price">￥12</p>
+                </div>
+              </li>
+              <li class="shopListItem">
+                <a href="javaScript:;">
+                  <img src="https://yanxuan-item.nosdn.127.net/89ea5ccc1e8e09912b17c18005b6f704.png?imageView&quality=65&thumbnail=330x330" alt="">
+                </a>
+                <div class="info">
+                  <span class="words">泰国制造，镜片优选</span>
+                  <p class="price">￥12</p>
+                </div>
+              </li>
+              <li class="shopListItem">
+                <span>
+                  <a href="javaScript:;">
+                    查看更多>
+                  </a>
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="categoryModule">
+          <div class="bigImage">
+            <a href="javaScript:;">
+              <img src ="https://yanxuan.nosdn.127.net/f377290320aac364e5984ce70f6baaea.jpg?imageView&thumbnail=750x0&quality=75"/>
+            </a>
+          </div>
+          <div class="shopWrapper" ref="shopWrapper4">
+            <ul class="shopList">
+              <li class="shopListItem">
+                <a href="javaScript:;">
+                  <img src="https://yanxuan-item.nosdn.127.net/d9376c059ce15a774199e2cedc5a8d63.png?imageView&quality=65&thumbnail=330x330" alt="">
+                </a>
+                <div class="info">
+                    <span class="words">泰国制造，镜片优选</span>
+                    <p class="price">￥12</p>
+                </div>
+              </li>
+              <li class="shopListItem">
+                <a href="javaScript:;">
+                  <img src="https://yanxuan-item.nosdn.127.net/89ea5ccc1e8e09912b17c18005b6f704.png?imageView&quality=65&thumbnail=330x330" alt="">
+                  <div class="info">
+                    <span class="words">泰国制造，镜片优选</span>
+                    <p class="price">￥12</p>
+                  </div>
+                </a>
+              </li>
+              <li class="shopListItem">
+                <a href="javaScript:;">
+                  <img src="https://yanxuan-item.nosdn.127.net/d9376c059ce15a774199e2cedc5a8d63.png?imageView&quality=65&thumbnail=330x330" alt="">
+                </a>
+                <div class="info">
+                    <span class="words">泰国制造，镜片优选</span>
+                    <p class="price">￥12</p>
+                </div>
+              </li>
+              <li class="shopListItem">
+                <a href="javaScript:;">
+                  <img src="https://yanxuan-item.nosdn.127.net/89ea5ccc1e8e09912b17c18005b6f704.png?imageView&quality=65&thumbnail=330x330" alt="">
+                </a>
+                <div class="info">
+                  <span class="words">泰国制造，镜片优选</span>
+                  <p class="price">￥12</p>
+                </div>
+              </li>
+              <li class="shopListItem">
+                <a href="javaScript:;">
+                  <img src="https://yanxuan-item.nosdn.127.net/d9376c059ce15a774199e2cedc5a8d63.png?imageView&quality=65&thumbnail=330x330" alt="">
+                </a>
+                <div class="info">
+                    <span class="words">泰国制造，镜片优选</span>
+                    <p class="price">￥12</p>
+                </div>
+              </li>
+              <li class="shopListItem">
+                <a href="javaScript:;">
+                  <img src="https://yanxuan-item.nosdn.127.net/89ea5ccc1e8e09912b17c18005b6f704.png?imageView&quality=65&thumbnail=330x330" alt="">
+                </a>
+                <div class="info">
+                  <span class="words">泰国制造，镜片优选</span>
+                  <p class="price">￥12</p>
+                </div>
+              </li>
+              <li class="shopListItem">
+                <span>
+                  <a href="javaScript:;">
+                    查看更多>
+                  </a>
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="categoryModule">
+          <div class="bigImage">
+            <a href="javaScript:;">
+              <img src ="https://yanxuan.nosdn.127.net/09272c0588454c163017bfd19eb932ca.jpg?imageView&thumbnail=750x0&quality=75"/>
+            </a>
+          </div>
+          <div class="shopWrapper" ref="shopWrapper">
+            <ul class="shopList">
+              <li class="shopListItem">
+                <a href="javaScript:;">
+                  <img src="https://yanxuan-item.nosdn.127.net/d9376c059ce15a774199e2cedc5a8d63.png?imageView&quality=65&thumbnail=330x330" alt="">
+                </a>
+                <div class="info">
+                    <span class="words">泰国制造，镜片优选</span>
+                    <p class="price">￥12</p>
+                </div>
+              </li>
+              <li class="shopListItem">
+                <a href="javaScript:;">
+                  <img src="https://yanxuan-item.nosdn.127.net/89ea5ccc1e8e09912b17c18005b6f704.png?imageView&quality=65&thumbnail=330x330" alt="">
+                  <div class="info">
+                    <span class="words">泰国制造，镜片优选</span>
+                    <p class="price">￥12</p>
+                  </div>
+                </a>
+              </li>
+              <li class="shopListItem">
+                <a href="javaScript:;">
+                  <img src="https://yanxuan-item.nosdn.127.net/d9376c059ce15a774199e2cedc5a8d63.png?imageView&quality=65&thumbnail=330x330" alt="">
+                </a>
+                <div class="info">
+                    <span class="words">泰国制造，镜片优选</span>
+                    <p class="price">￥12</p>
+                </div>
+              </li>
+              <li class="shopListItem">
+                <a href="javaScript:;">
+                  <img src="https://yanxuan-item.nosdn.127.net/89ea5ccc1e8e09912b17c18005b6f704.png?imageView&quality=65&thumbnail=330x330" alt="">
+                </a>
+                <div class="info">
+                  <span class="words">泰国制造，镜片优选</span>
+                  <p class="price">￥12</p>
+                </div>
+              </li>
+              <li class="shopListItem">
+                <a href="javaScript:;">
+                  <img src="https://yanxuan-item.nosdn.127.net/d9376c059ce15a774199e2cedc5a8d63.png?imageView&quality=65&thumbnail=330x330" alt="">
+                </a>
+                <div class="info">
+                    <span class="words">泰国制造，镜片优选</span>
+                    <p class="price">￥12</p>
+                </div>
+              </li>
+              <li class="shopListItem">
+                <a href="javaScript:;">
+                  <img src="https://yanxuan-item.nosdn.127.net/89ea5ccc1e8e09912b17c18005b6f704.png?imageView&quality=65&thumbnail=330x330" alt="">
+                </a>
+                <div class="info">
+                  <span class="words">泰国制造，镜片优选</span>
+                  <p class="price">￥12</p>
+                </div>
+              </li>
+              <li class="shopListItem">
+                <span>
+                  <a href="javaScript:;">
+                    查看更多>
+                  </a>
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 右侧固定定位 -->
+    <a  class="gift"href="javaScript:;">
+      <i class="iconfont icon-lipin"></i>
+    </a>
+    <div class="arrow">
+      <i class="iconfont icon-jiantouxiangshang" ></i>
+    </div>
+    <!-- 底部 -->
+    <div class="footer">
+      <div class="top">
+        <div class="phone">下载APP</div>
+        <div class="pc">电脑版</div>
+      </div>
+      <p>网易公司版权所有 © 1997-2019</p>
+      <P>食品经营许可证：JY13301080111719</P>
     </div>
   </div>
 </template>
@@ -625,7 +1081,38 @@
       console.log(this.$refs.homeNav)
       new BScroll(this.$refs.homeNav,{
         click:true,
-        scrollX:true
+        scrollX:true,
+        scrollY:false
+      })
+      new BScroll(this.$refs.container,{
+        click:true,
+        scrollX:true,
+        scrollY:false
+      })
+      new BScroll(this.$refs.shopWrapper1,{
+        click:true,
+        scrollX:true,
+        scrollY:false
+      })
+      new BScroll(this.$refs.shopWrapper2,{
+        click:true,
+        scrollX:true,
+        scrollY:false
+      })
+      new BScroll(this.$refs.shopWrapper3,{
+        click:true,
+        scrollX:true,
+        scrollY:false
+      })
+      new BScroll(this.$refs.shopWrapper4,{
+        click:true,
+        scrollX:true,
+        scrollY:false
+      })
+      new BScroll(this.$refs.shopWrapper,{
+        click:true,
+        scrollX:true,
+        scrollY:false
       })
     }
   }
@@ -676,9 +1163,7 @@
         display flex
         width 100%
         .nav
-          width 90%
           display flex
-          overflow hidden
           li
             white-space nowrap
             line-height 30px
@@ -722,10 +1207,13 @@
           top 40px
           width 60px
           height 30px
+          background #fff
           text-align center
-          transition transform 0.5s
+          .icon
+            transition all 0.5s
           &.on
-            transform rotate(180deg)
+            .icon
+              transform rotate(180deg)       
     .mask
       position: fixed;
       z-index: 1
@@ -1077,5 +1565,238 @@
             .price 
               font-size 12px
               color #7F7F7F
-
+      .topics
+        padding 0 10px
+        background #fff
+        margin-top 10px
+        .title
+          display flex
+          justify-content space-between
+          font-size 16px
+          color #333
+          height 50px
+          line-height 50px
+        .container
+          display flex
+          width 100%
+          overflow hidden
+          .topicList
+            display flex
+            height 190px
+            .topicItem
+              width 240px
+              margin-right 15px
+              background: #F5F5F5;
+              a
+                width 100%
+                height 133px
+                img
+                  width 100%
+                  height 133px
+              .info
+                width 240px
+                padding 4px
+                h4
+                  white-space nowrap
+                  overflow hidden
+                  text-overflow ellipsis
+                  font-size 14px
+                  color #333
+              p
+                padding 4px
+                font-size 12px
+                color #7F7F7F
+      .zhongchou
+        padding 5px 10px
+        margin-top 10px
+        background #fff
+        .title
+          display flex
+          justify-content space-between
+          font-size 16px
+          color #333
+          height 50px
+          line-height 50px
+        .top
+          margin-bottom 20px
+          a
+            display flex
+            align-items center
+            .image
+              background #f4f4f4
+              width 105px
+              height 105px
+              margin-right 15px
+              img
+                width 105px
+                height 105px
+            .info
+              .info_one
+                font-size 14px
+                color #333
+                margin-bottom 5px
+              .price
+                font-size 12px
+                color #b4282d
+                margin-bottom 5px
+                span
+                  font-size 16px
+              .progressWrap
+                position relative
+                height 3px
+                width 180px
+                background #D8D8D8
+                margin  15px 0px
+                .progres
+                  position absolute
+                  top: 0;
+                  left: 0;
+                  height 3px
+                  width 9%
+                  background #FEA438
+                .rate
+                  font-size 12px
+                  color #7F7F7F
+                  position absolute
+                  top: -4px;
+                  right: -30px;
+              .info_last
+                font-size 12px
+                color #7F7F7F
+        .bottom
+          margin-bottom 20px
+          a
+            display flex
+            align-items center
+            .image
+              background #f4f4f4
+              width 105px
+              height 105px
+              margin-right 15px
+              img
+                width 105px
+                height 105px
+            .info
+              .info_one
+                font-size 14px
+                color #333
+                margin-bottom 5px
+              .price
+                font-size 12px
+                color #b4282d
+                margin-bottom 5px
+                span
+                  font-size 16px
+              .progressWrap
+                position relative
+                height 3px
+                width 180px
+                background #D8D8D8
+                margin  15px 0px
+                .progres
+                  position absolute
+                  top: 0;
+                  left: 0;
+                  height 3px
+                  width 100%
+                  background #FEA438
+                .rate
+                  font-size 12px
+                  color #7F7F7F
+                  position absolute
+                  top: -4px;
+                  right: -30px;
+              .info_last
+                font-size 12px
+                color #7F7F7F
+      .categoryWrap
+        .categoryModule
+          background #fff
+          .bigImage
+            a
+              img
+                width 100%
+                height 185px
+          .shopWrapper
+            width 100%
+            height 190px
+            margin-top 5px
+            overflow hidden
+            .shopList
+              padding-left 10px
+              float left
+              display flex
+              .shopListItem
+                padding-bottom 15px
+                margin-right 10px
+                &:last-child
+                  width 108px
+                  height 94px
+                  background #f4f4f4
+                  font-size 14px
+                  color #333
+                  text-align center
+                  line-height 94px
+                img
+                  width 108px
+                  background #f4f4f4
+                .info
+                  padding-left 4px
+                  .price
+                    font-size 12px
+                    color #b4282d
+                  .words
+                    font-size 12px
+                    color #333
+    .gift
+      position: fixed;
+      right: 0;
+      bottom: 110px;
+      display: block;
+      width 60px
+      height 40px
+      background #fff
+      border-radius 20px 0px 0px 20px
+      z-index: 10;
+      text-align center
+      line-height 40px
+      .icon-lipin
+        color red
+        font-size 28px
+    .arrow
+      position: fixed;
+      right: .5rem;
+      bottom: 60px;
+      width 41px
+      height 41px
+      text-align center
+      line-height 34px
+      background #fff
+      border-radius 50%
+      .icon-jiantouxiangshang
+        width: 1.09333rem;
+        height: 1.09333rem;
+    .footer
+      width 100%
+      height 120px
+      background #414141
+      .top
+        display flex
+        justify-content center
+        padding 20px 0px
+        div
+          font-size 12px
+          text-align center
+          line-height 34px
+          width 90px
+          height 30px
+          border: 1px solid #999;
+          color: #fff;
+          background-color: transparent
+          margin-right 25px
+      p
+        text-align center
+        font-size: 12px;
+        line-height: 20px;
+        color: #999;
 </style>
