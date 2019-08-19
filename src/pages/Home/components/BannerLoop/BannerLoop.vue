@@ -53,7 +53,7 @@
   export default {
 		mounted () {
 			this.$nextTick(()=>{
-					console.log(this.$refs)
+				console.log(this.$refs)
 				var mySwiper = new Swiper (this.$refs.container, {
 					loop: true, // 循环模式选项
 					scrollX: true,

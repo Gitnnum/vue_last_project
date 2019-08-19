@@ -6,11 +6,11 @@
     <title>vue_project</title>
     <link rel="stylesheet" href="/static/css/reset.css">
     <link rel="stylesheet" href="http://at.alicdn.com/t/font_1356380_06jp9d2dq19e.css">
-    <style>
+    <!-- <style>
       html{
         font-size: 1px !important
       }
-    </style>
+    </style> -->
   </head>
   <body>
     <div id="app"></div>
@@ -18,23 +18,23 @@
   </body>
   <script>
     // 点透
-    // var aNodes = document.querySelectorAll('a')
-    // for(var i=0;i<aNodes.length;i++){
-    //   aNodes[i].addEventListener('touchstart',function(){
-    //     window.location.href = this.href
-    // })
-    // }
+    var aNodes = document.querySelectorAll('a')
+    for(var i=0;i<aNodes.length;i++){
+      aNodes[i].addEventListener('touchstart',function(){
+        window.location.href = this.href
+      })
+     }
     //阻止浏览器默认行为
-    // document.addEventListener('touchstart',function(event){
-    //   event.preventDefault()
-    // })
+    document.addEventListener('touchstart',function(event){
+      event.preventDefault()
+    })
     //适配
-    !(function(){
-      var width = document.documentElement.clientWidth
-      var styleNode = document.createElement('style')
-      styleNode.innerHTML =  'html{font-size: '+width/16+'px !important}'
-      document.body.appendChild(styleNode)
-    })()
+    // !(function(){
+    //   var width = document.documentElement.clientWidth
+    //   var styleNode = document.createElement('style')
+    //   styleNode.innerHTML =  'html{font-size: '+width/16+'px !important}'
+    //   document.body.appendChild(styleNode)
+    // })()
   </script>
 </html>
 

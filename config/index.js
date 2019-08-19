@@ -10,7 +10,14 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    proxyTable: {
+      '/api':{ // 拦截/api开头的请求 转发到网易
+        target:'http://m.you.163.com',    // 代理目标的基础路径
+        changeOrigin:true,//支持跨域
+        pathRewrite:{'^/api':''}//重写路径
+
+      }
+    },
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST

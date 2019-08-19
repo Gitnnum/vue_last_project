@@ -8,83 +8,16 @@
       <div class="bottom">
         <div class="nav" ref="nav">
           <ul class="navList">
-            <li class="active">推荐专区</li>
-            <li>夏凉专区</li>
-            <li>爆品专区</li>
-            <li>推荐专区</li>
-            <li>推荐专区</li>
-            <li>推荐专区</li>
-            <li>推荐专区</li>
-            <li>推荐专区</li>
-            <li>全球特色</li>
-            <li>爆品专区</li>
-            <li>推荐专区</li>
-            <li>推荐专区</li>
-            <li>推荐专区</li>
-            <li>推荐专区</li>
-            <li>推荐专区</li>
-            <li>全球特色</li>
+            <li v-for="(item,index) in categoryArr" :key="index" @click="saveCurrentIndex(index)" 
+            :class="{active:categoryArr[currentIndex] === item}">
+            {{item.name}}
+            </li>
           </ul>
         </div>
         <!-- 第一种模板 -->
-        <div class="content" v-show="isContent">
-          <div class="swiper-container">
-            <div class="swiper-wrapper">
-              <div class="swiper-slide">
-                <a href="javaScript:;">
-                  <img src="https://yanxuan.nosdn.127.net/6b4e9df61f124c2eb18f764fdc957255.jpg?imageView&quality=75&thumbnail=0x196" alt="banner">
-                </a>
-              </div>
-              <div class="swiper-slide">
-                <a href="javaScript:;">
-                  <img src="https://yanxuan.nosdn.127.net/99818d29b6d1eb03477ba2874a119d6d.jpg?imageView&quality=75&thumbnail=0x196" alt="banner">
-                </a>
-              </div>
-            </div>
-            <!-- 如果需要分页器 -->
-            <div class="swiper-pagination"></div>
-          </div>
-          <ul class="list">
-            <li>
-              <a href="javaScript:;">
-                <img src="https://yanxuan.nosdn.127.net/c117ea2f1c4d978eb1f310d6d9ec3226.png?imageView&quality=85&thumbnail=144x144" alt="">
-                <span>员工精选好货</span>
-              </a>
-            </li>
-            <li>
-              <a href="javaScript:;">
-                <img src="https://yanxuan.nosdn.127.net/c117ea2f1c4d978eb1f310d6d9ec3226.png?imageView&quality=85&thumbnail=144x144" alt="">
-                <span>员工精选好货</span>
-              </a>
-            </li>
-            <li>
-              <a href="javaScript:;">
-                <img src="https://yanxuan.nosdn.127.net/c117ea2f1c4d978eb1f310d6d9ec3226.png?imageView&quality=85&thumbnail=144x144" alt="">
-                <span>员工精选好货</span>
-              </a>
-            </li>
-            <li>
-              <a href="javaScript:;">
-                <img src="https://yanxuan.nosdn.127.net/c117ea2f1c4d978eb1f310d6d9ec3226.png?imageView&quality=85&thumbnail=144x144" alt="">
-                <span>员工精选好货</span>
-              </a>
-            </li>
-            <li>
-              <a href="javaScript:;">
-                <img src="https://yanxuan.nosdn.127.net/c117ea2f1c4d978eb1f310d6d9ec3226.png?imageView&quality=85&thumbnail=144x144" alt="">
-                <span>员工精选好货</span>
-              </a>
-            </li>
-            <li>
-              <a href="javaScript:;">
-                <img src="https://yanxuan.nosdn.127.net/c117ea2f1c4d978eb1f310d6d9ec3226.png?imageView&quality=85&thumbnail=144x144" alt="">
-                <span>员工精选好货</span>
-              </a>
-            </li>
-          </ul>
-        </div>
+        <CategoryItem :currentIndex="currentIndex"/>
         <!-- 第二种模板 -->
-        <div class="contentOther" v-show="!isContent">
+        <div class="contentOther" v-if="!isContent">
           <div class="swiper-container">
             <div class="swiper-wrapper">
               <div class="swiper-slide">
@@ -150,13 +83,27 @@
 <script type="text/ecmascript-6">
   import BScroll from 'better-scroll'
   import Swiper from 'swiper'
+  import { mapState } from 'vuex'
+  import CategoryItem from './CategoryItem/CategoryItem'
   export default {
     data () {
       return {
-        isContent:false // 准备工作先显示第一个模板
+        isContent:true, // 准备工作先显示第一个模板
+        currentIndex: 0 // 点击时候的index 用于添加active
       }
     },
+    components: {
+      CategoryItem
+    },
+    computed:{
+      ...mapState({
+        categoryArr: state => state.category.categoryArr
+      })
+    },
     mounted () {
+      // 分发获取分类信息
+      this.$store.dispatch('getCategory')
+
       var mySwiper = new Swiper ('.swiper-container', {
         loop: true, // 循环模式选项
         
@@ -165,11 +112,22 @@
           el: '.swiper-pagination',
         }
       })
-      new BScroll(this.$refs.nav,{
-        click:true,
-        scrollX:false,
-        scrollY:true
-      })
+    },
+    watch:{
+      categoryArr () {
+        this.$nextTick(()=>{
+          new BScroll(this.$refs.nav,{
+            click:true,
+            scrollX:false,
+            scrollY:true
+          })
+        })
+      }
+    },
+    methods:{
+      saveCurrentIndex (index) {
+        this.currentIndex = index
+      }
     }
   }
 </script>
@@ -204,6 +162,7 @@
         padding 20px 0
         height 100%
         width 25%
+        background #eee
         .navList
           font-size 14px
           overflow hidden
@@ -225,33 +184,6 @@
                 bottom: 0;
                 width: 3px;
                 background-color: #ab2b2b;
-      .content
-        padding-right 20px
-        width 75%
-        .swiper-container
-          .swiper-wrapper
-            .swiper-slide
-              a
-                img 
-                  width 100%
-                  height 120px
-          /deep/ .swiper-pagination-bullet
-            width 20px
-            height 2px
-            background #ffffff
-        .list
-          display flex
-          flex-wrap wrap
-          li
-            width 72px
-            margin-right 10px
-            margin-left 5px
-            img 
-              width 72px
-              height 72px
-            span 
-              font-size 12px
-              color #333
       .contentOther
         padding-right 20px
         width 75%

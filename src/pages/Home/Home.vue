@@ -149,14 +149,6 @@
     },
     mounted () {
       this.$nextTick(()=>{
-        // var mySwiper = new Swiper ('.swiper-container', {
-        //   loop: true, // 循环模式选项
-          
-        //   // 如果需要分页器
-        //   pagination: {
-        //     el: '.swiper-pagination',
-        //   }
-        // })
         new BScroll(this.$refs.homeNav,{
           click:true,
           scrollX:true,
