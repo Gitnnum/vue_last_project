@@ -13,7 +13,7 @@
         </div>
       </div>
       <div class="tabWrapper" ref="searchNav">
-        <ul class="nav" v-show="!isShow" >
+        <ul class="nav" >
           <li class="active">盛夏特别版</li>
           <li>推荐</li>
           <li>好货内部价</li>
