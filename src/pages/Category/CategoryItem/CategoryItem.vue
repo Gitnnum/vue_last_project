@@ -33,7 +33,8 @@
         categoryArr: state => state.category.categoryArr
 			}),
 			currentArr () {
-					return this.categoryArr[this.currentIndex] || {}
+					let id = this.$route.params.id*1
+					return this.categoryArr.find((item)=> item.id === id) || {}
 			},
 			subCateList () {
 				if(this.currentArr){

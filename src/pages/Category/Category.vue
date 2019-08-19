@@ -8,14 +8,13 @@
       <div class="bottom">
         <div class="nav" ref="nav">
           <ul class="navList">
-            <li v-for="(item,index) in categoryArr" :key="index" @click="saveCurrentIndex(index)" 
-            :class="{active:categoryArr[currentIndex] === item}">
-            {{item.name}}
+            <li v-for="(item,index) in categoryArr" :key="index"  :class="{active:categoryArr[currentIndex] === item}" @click="saveCurrent(index)">
+              <router-link :to="`/category/detial/${item.id}`"> {{item.name}} </router-link>
             </li>
           </ul>
         </div>
         <!-- 第一种模板 -->
-        <CategoryItem :currentIndex="currentIndex"/>
+        <router-view></router-view>
         <!-- 第二种模板 -->
         <div class="contentOther" v-if="!isContent">
           <div class="swiper-container">
@@ -125,7 +124,7 @@
       }
     },
     methods:{
-      saveCurrentIndex (index) {
+      saveCurrent (index) {
         this.currentIndex = index
       }
     }

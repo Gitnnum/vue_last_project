@@ -5,6 +5,7 @@ import ShopCart from '../pages/ShopCart/ShopCart.vue'
 import Search from '../pages/Search/Search.vue'
 import Hotfind from '../pages/Hotfind/Hotfind.vue'
 import UserCenter from '../pages/UserCenter/UserCenter.vue'
+import CategoryItem from '../pages/Category/CategoryItem/CategoryItem.vue'
 export default [
     {
         path:'/home',
@@ -16,6 +17,12 @@ export default [
     {
         path:'/category',
         component: Category,
+        children:[
+            {
+							path:'/category/detial/:id',
+							component: CategoryItem
+            }
+        ],
         meta:{
             showFooter:true
         }
