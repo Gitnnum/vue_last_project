@@ -3,26 +3,43 @@ import Category from '../pages/Category/Category.vue'
 import Personal from '../pages/Personal/Personal.vue'
 import ShopCart from '../pages/ShopCart/ShopCart.vue'
 import Search from '../pages/Search/Search.vue'
+import Hotfind from '../pages/Hotfind/Hotfind.vue'
 export default [
     {
         path:'/home',
-        component: Home
+        component: Home,
+        meta:{
+            showFooter:true
+        }
     },
     {
         path:'/category',
-        component: Category
+        component: Category,
+        meta:{
+            showFooter:true
+        }
     },
     {
         path:'/personal',
         component: Personal
     },
     {
+        path:'/hotfind',
+        component: Hotfind
+    },
+    {
         path:'/shopCart',
-        component: ShopCart
+        component: ShopCart,
+        meta:{
+            showFooter:true
+        }
     },
     {
         path:'/search',
-        component: Search
+        component: Search,
+        meta:{
+            showFooter:true
+        }
     },
     {
         path:'/',

@@ -2,12 +2,12 @@
   <div class="loginWrap">
     <div class="login_header">
       <div class="header">
-        <i class="iconfont icon-shouye1"></i>
+        <i class="iconfont icon-shouye1" @click="$router.replace('/home')"></i>
         <div class="find">
           <img src="/static/images/logo.png" alt="">
         </div>
         <div class="right">
-          <i class="iconfont icon-sousuo"></i>
+          <i class="iconfont icon-sousuo" @click="$router.push('/hotfind')"></i>
           <i class="iconfont icon-gouwuche"></i>
         </div>
       </div>
@@ -81,6 +81,34 @@
         其他登录方式>
       </div>
     </div>
+    <!-- 注册 -->
+    <div class="register" v-show="isRegister">
+      <div class="image">
+        <p>手机注册</p>
+      </div>
+      <form class="form">
+        <input type="text" placeholder="请输入手机号">
+        <i class="iconfont icon-quxiao"></i>
+        <div class="inp_btn">
+          <input type="text" placeholder="请输入短信验证码">
+          <button class="code">获取验证码</button>
+        </div>
+        <input type="password" placeholder="请输入密码">
+        <button class="btnLogin">注册</button>
+      </form>
+      <div class="checkbox">
+        <input type="checkbox">
+        <div class="agreement">
+          <span>我同意</span>
+          <a href="javascript:;">《服务条款》</a>
+          <span>和</span>
+          <a href="javascript:;">《网易隐私政策》</a>
+        </div>
+      </div>
+      <div class="other">
+        邮箱账号注册>
+      </div>
+    </div>
   </div>
   
 </template>
@@ -90,8 +118,9 @@
     data () {
       return {
         isLoginMain:true,  //是否显示登陆的首页
-        isLoginByPhone:false,
-        isLoginByEmil:false
+        isLoginByPhone:false, // 是否手机登录
+        isLoginByEmil:false, // 是否邮箱登录
+        isRegister: false // 是否注册
       }
     }
   }
@@ -298,4 +327,77 @@
         text-align center
         font-size 14px
         color #333
+    .register
+      padding-bottom 250px
+      .image
+        padding-top 40px
+        height 32px
+        text-align center
+      .form
+        position relative
+        margin-top 10px
+        padding 0 20px
+        .icon-quxiao
+          position absolute
+          top 20px 
+          right 40px
+          font-size 16px
+          color #666
+        input
+          width 90%
+          margin 14px 0
+          padding 5px 10px
+          border-bottom 1px solid #eee
+          font-size 15px
+          color #666
+          &::-webkit-input-placeholder
+            font-size 15px
+        .inp_btn
+          position relative
+          .code
+            position absolute
+            top 14px
+            right 25px
+            font-size 14px
+            color #333
+            background transparent
+            border 1px solid #eee
+            border-radius 2px
+        .problem
+          font-size 15px
+          color #333
+          display flex
+          padding 0 10px
+          justify-content space-between
+          margin 15px 0
+          .left
+            color #7f7f7f
+        .btnLogin
+          width 100%
+          height 45px
+          background #DD1A21
+          color #fff
+          border none 
+          border-radius 5px
+      .checkbox
+        margin-top 20px
+        display flex
+        padding 0 20px
+        input
+          width 18px
+          height 18px
+          margin-right 10px
+        .agreement
+          line-height 18px
+          font-size 12px
+          span 
+            color #7f7f7f
+          a
+            color #007AFF
+      .other
+        margin-top 20px
+        text-align center
+        font-size 14px
+        color #333
+    
 </style>
