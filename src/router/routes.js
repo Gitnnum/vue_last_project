@@ -4,6 +4,7 @@ import Personal from '../pages/Personal/Personal.vue'
 import ShopCart from '../pages/ShopCart/ShopCart.vue'
 import Search from '../pages/Search/Search.vue'
 import Hotfind from '../pages/Hotfind/Hotfind.vue'
+import UserCenter from '../pages/UserCenter/UserCenter.vue'
 export default [
     {
         path:'/home',
@@ -37,6 +38,13 @@ export default [
     {
         path:'/search',
         component: Search,
+        meta:{
+            showFooter:true
+        }
+    },
+    {
+        path:'/usercenter',
+        component: UserCenter,
         meta:{
             showFooter:true
         }
