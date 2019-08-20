@@ -7,61 +7,19 @@
 		<div class="top">
 			<div class="hotLeft">
 				<span>热销</span>榜
-				<img src="https://yanxuan-item.nosdn.127.net/74662d24f6d217b520178c5a6d031457.png?imageView&quality=65&thumbnail=200x200" alt="">
+				<img src="https://yanxuan-item.nosdn.127.net/d9376c059ce15a774199e2cedc5a8d63.png?imageView&quality=65&thumbnail=200x200" alt="">
 			</div>
 			<div class="goodRight">
 				<span>好评</span>榜
-				<img src="https://yanxuan-item.nosdn.127.net/74662d24f6d217b520178c5a6d031457.png?imageView&quality=65&thumbnail=200x200" alt="">
+				<img src="https://yanxuan.nosdn.127.net/6fd807743e8e25472aca8b6b0b8f3039.png?imageView&quality=65&thumbnail=200x200" alt="">
 			</div>
 		</div>
 		<div class="bottom">
 			<ul class="list">
-				<li>
-					<a href="javaScript:;">
-						<p class="name">居家生活榜</p>
-						<img src="https://yanxuan-item.nosdn.127.net/15aaef3c3dd497fccb91358885a5ba0f.png?imageView&quality=65&thumbnail=200x200" alt="">
-					</a>
-				</li>
-				<li>
-					<a href="javaScript:;">
-						<p class="name">居家生活榜</p>
-						<img src="https://yanxuan-item.nosdn.127.net/15aaef3c3dd497fccb91358885a5ba0f.png?imageView&quality=65&thumbnail=200x200" alt="">
-					</a>
-				</li>
-				<li>
-					<a href="javaScript:;">
-						<p class="name">居家生活榜</p>
-						<img src="https://yanxuan-item.nosdn.127.net/15aaef3c3dd497fccb91358885a5ba0f.png?imageView&quality=65&thumbnail=200x200" alt="">
-					</a>
-				</li>
-				<li>
-					<a href="javaScript:;">
-						<p class="name">居家生活榜</p>
-						<img src="https://yanxuan-item.nosdn.127.net/15aaef3c3dd497fccb91358885a5ba0f.png?imageView&quality=65&thumbnail=200x200" alt="">
-					</a>
-				</li>
-				<li>
-					<a href="javaScript:;">
-						<p class="name">居家生活榜</p>
-						<img src="https://yanxuan-item.nosdn.127.net/15aaef3c3dd497fccb91358885a5ba0f.png?imageView&quality=65&thumbnail=200x200" alt="">
-					</a>
-				</li>
-				<li>
-					<a href="javaScript:;">
-						<p class="name">居家生活榜</p>
-						<img src="https://yanxuan-item.nosdn.127.net/15aaef3c3dd497fccb91358885a5ba0f.png?imageView&quality=65&thumbnail=200x200" alt="">
-					</a>
-				</li>
-				<li>
-					<a href="javaScript:;">
-						<p class="name">居家生活榜</p>
-						<img src="https://yanxuan-item.nosdn.127.net/15aaef3c3dd497fccb91358885a5ba0f.png?imageView&quality=65&thumbnail=200x200" alt="">
-					</a>
-				</li>
-				<li>
-					<a href="javaScript:;">
-						<p class="name">居家生活榜</p>
-						<img src="https://yanxuan-item.nosdn.127.net/15aaef3c3dd497fccb91358885a5ba0f.png?imageView&quality=65&thumbnail=200x200" alt="">
+				<li v-for="(item,index) in categoryList" :key="index">
+					<a href="javascript:;">
+						<p class="name">{{item.categoryName}}</p>
+						<img :src="item.picUrl" alt="">
 					</a>
 				</li>
 			</ul>
@@ -70,7 +28,11 @@
 </template>
 
 <script type="text/ecmascript-6">
-  export default {
+	import { mapGetters } from 'vuex'
+	export default {
+		computed:{
+			...mapGetters(['categoryList'])
+		}
   }
 </script>
 

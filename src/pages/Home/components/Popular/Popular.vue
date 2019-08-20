@@ -4,44 +4,26 @@
 			<span>人气推荐</span>
 			<span class="more">更多></span>
 		</div>
-		<div class="bigItem">
+		<div class="bigItem" v-if="popularItemList">
 			<a href="javaScript:;">
 				<div class="left">
-					<img src="https://yanxuan-item.nosdn.127.net/08f6e74986069813ab7dab4c2491cf96.png?imageView&quality=65&thumbnail=280x280" alt="">
+					<img :src="popularItemList[0].listPicUrl" alt="">
 				</div>
 				<div class="right">
 					<p class="one">抄底特惠</p>
-					<p class="two"><span>泰国制造 天然乳胶凉感席套装 可机洗</span></p>
-					<p class="three">天然乳胶内芯，科技凉感面料</p>
-					<p class="price">￥123</p>
+					<p class="two"><span>{{popularItemList[0].name}}</span></p>
+					<p class="three">{{popularItemList[0].simpleDesc}}</p>
+					<p class="price">￥{{popularItemList[0].retailPrice}}</p>
 				</div>
 			</a>
 		</div>
 		<ul class="shopList">
-			<li class="shopListItem">
+			<li class="shopListItem" v-for="(item,index) in popularImg" :key="index">
 				<a href="javaScript:;">
-					<img src="/static/images/私人定制.png" alt="">
+					<img :src="item.primaryPicUrl" alt="">
 					<div class="info">
-						<span class="words">泰国制造，镜片优选</span>
-						<span class="price">￥12</span>
-					</div>
-				</a>
-			</li>
-			<li class="shopListItem">
-				<a href="javaScript:;">
-					<img src="/static/images/私人定制.png" alt="">
-					<div class="info">
-						<span class="words">泰国制造，镜片优选</span>
-						<span class="price">￥12</span>
-					</div>
-				</a>
-			</li>
-			<li class="shopListItem">
-				<a href="javaScript:;">
-					<img src="/static/images/私人定制.png" alt="">
-					<div class="info">
-						<span class="words">泰国制造，镜片优选</span>
-						<span class="price">￥12</span>
+						<span class="words">{{item.name.length >10 ?item.name.slice(0,10)+"..." : item.name}}</span>
+						<span class="price">￥{{item.retailPrice}}</span>
 					</div>
 				</a>
 			</li>
@@ -50,8 +32,19 @@
 </template>
 
 <script type="text/ecmascript-6">
+	import { mapGetters } from 'vuex'
   export default {
+		computed:{
+			...mapGetters(['popularItemList','popularImg'])
+		},
+		// //定义除了第一个商品剩下的三个商品数组，用于遍历
+		// popularImg () {
+		// 	//if(this.popularItemLis){
+		// 		return this.popularItemList.splice(0,1)
+		// 	//}
+		// }
   }
+	//popularItemList
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus" scoped>
@@ -110,6 +103,8 @@
 					width 108px
 					background #F5F5F5
 				.info
+					padding-top 5px
+					width 100px
 					padding-left 4px
 					.price
 						font-size 12px

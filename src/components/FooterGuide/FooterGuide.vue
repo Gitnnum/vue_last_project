@@ -4,7 +4,7 @@
       <i class="iconfont icon-shouye1"></i>
       <span>首页</span>
     </a>
-    <a href="javascript:;" @click="$router.replace('/category')" :class="{on:$route.path === '/category'}">
+    <a href="javascript:;" @click="$router.replace('/category')" v-if="categoryArr[0]" :class="{on:$route.path === '/category/detial/'+categoryArr[0].id}">
       <i class="iconfont icon-icon"></i>
       <span>分类</span>
     </a>
@@ -30,7 +30,17 @@
 </template>
 
 <script type="text/ecmascript-6">
+  import { mapState } from 'vuex'
   export default {
+    mounted (){
+      // 分发获取分类信息
+      this.$store.dispatch('getCategory')
+    },
+    computed:{
+      ...mapState({
+        categoryArr: state => state.category.categoryArr
+      })
+    },
   }
 </script>
 

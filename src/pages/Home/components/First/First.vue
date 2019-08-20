@@ -1,65 +1,11 @@
 <template>
   <div class="first">
 		<ul class="goodsCategory">
-			<li>
-				<a href="javaScript:;">
-					<img src="/static/images/上新.png" alt="">
+			<li v-for="(kingKong,index) in kingKongModule.kingKongList" :key="index">
+				<a href="javascript:;">
+					<img :src="kingKong.picUrl" alt="">
 				</a>
-				<span>新品首发</span>
-			</li>
-			<li>
-				<a href="javaScript:;">
-					<img src="/static/images/上新.png" alt="">
-				</a>
-				<span>新品首发</span>
-			</li>
-			<li>
-				<a href="javaScript:;">
-					<img src="/static/images/上新.png" alt="">
-				</a>
-				<span>新品首发</span>
-			</li>
-			<li>
-				<a href="javaScript:;">
-					<img src="/static/images/上新.png" alt="">
-				</a>
-				<span>新品首发</span>
-			</li>
-			<li>
-				<a href="javaScript:;">
-					<img src="/static/images/上新.png" alt="">
-				</a>
-				<span>新品首发</span>
-			</li>
-			<li>
-				<a href="javaScript:;">
-					<img src="/static/images/上新.png" alt="">
-				</a>
-				<span>新品首发</span>
-			</li>
-			<li>
-				<a href="javaScript:;">
-					<img src="/static/images/上新.png" alt="">
-				</a>
-				<span>新品首发</span>
-			</li>
-			<li>
-				<a href="javaScript:;">
-					<img src="/static/images/上新.png" alt="">
-				</a>
-				<span>新品首发</span>
-			</li>
-			<li>
-				<a href="javaScript:;">
-					<img src="/static/images/上新.png" alt="">
-				</a>
-				<span>新品首发</span>
-			</li>
-			<li>
-				<a href="javaScript:;">
-					<img src="/static/images/上新.png" alt="">
-				</a>
-				<span>新品首发</span>
+				<span>{{kingKong.text}}</span>
 			</li>
 		</ul>
 		<div class="employee">
@@ -67,44 +13,14 @@
 				<img src="https://yanxuan.nosdn.127.net/a55393ea2c010bd73f0666e2ffca8d55.gif" alt="img">
 			</a>
 		</div>
+		<!-- 购物导航榜单 -->
 		<div class="employeeShops">
-			<div class="item">
+			<div class="item" v-for="(item,index) in homeData.sceneLightShoppingGuideModule">
 				<a href="javaScript:;">
-					<p class="one">9.9超值专区首发</p>
-					<p class="two">180款爆品新定价</p>
+					<p class="one">{{item.styleItem.title}}</p>
+					<p class="two">{{item.styleItem.desc}}</p>
 					<div class="images">
-						<img src="https://yanxuan-item.nosdn.127.net/b2065eab67acc5923a8ec71167a35f6a.png?imageView&thumbnail=150x150&quality=75" alt="">
-						<img src="https://yanxuan-item.nosdn.127.net/569ab2c87df93c56de39b8c890463242.png?imageView&thumbnail=150x150&quality=75" alt="">
-					</div>
-				</a>
-			</div>
-			<div class="item">
-				<a href="javaScript:;">
-					<p class="one">9.9超值专区首发</p>
-					<p class="two">180款爆品新定价</p>
-					<div class="images">
-						<img src="https://yanxuan-item.nosdn.127.net/b2065eab67acc5923a8ec71167a35f6a.png?imageView&thumbnail=150x150&quality=75" alt="">
-						<img src="https://yanxuan-item.nosdn.127.net/569ab2c87df93c56de39b8c890463242.png?imageView&thumbnail=150x150&quality=75" alt="">
-					</div>
-				</a>
-			</div>
-			<div class="item">
-				<a href="javaScript:;">
-					<p class="one">9.9超值专区首发</p>
-					<p class="two">180款爆品新定价</p>
-					<div class="images">
-						<img src="https://yanxuan-item.nosdn.127.net/b2065eab67acc5923a8ec71167a35f6a.png?imageView&thumbnail=150x150&quality=75" alt="">
-						<img src="https://yanxuan-item.nosdn.127.net/569ab2c87df93c56de39b8c890463242.png?imageView&thumbnail=150x150&quality=75" alt="">
-					</div>
-				</a>
-			</div>
-			<div class="item">
-				<a href="javaScript:;">
-					<p class="one">9.9超值专区首发</p>
-					<p class="two">180款爆品新定价</p>
-					<div class="images">
-						<img src="https://yanxuan-item.nosdn.127.net/b2065eab67acc5923a8ec71167a35f6a.png?imageView&thumbnail=150x150&quality=75" alt="">
-						<img src="https://yanxuan-item.nosdn.127.net/569ab2c87df93c56de39b8c890463242.png?imageView&thumbnail=150x150&quality=75" alt="">
+						<img :src="pic" alt="img"  v-for="(pic,index) in item.styleItem.picUrlList" :key="index">
 					</div>
 				</a>
 			</div>
@@ -113,7 +29,19 @@
 </template>
 
 <script type="text/ecmascript-6">
+	import { mapState } from 'vuex'
   export default {
+		computed:{
+      ...mapState({
+        homeData: state => state.home.homeData
+			}),
+			// 分类导航
+      kingKongModule () {
+        if(this.homeData){
+          return this.homeData.kingKongModule || {}
+        }
+      }
+    },
   }
 </script>
 
@@ -165,14 +93,16 @@
 					margin-top 15px
 					margin-bottom 5px
 					text-align center
+					color #333
 				.two
 					font-size 12px
 					text-align center
 				.images
+					padding-top 10px
 					display flex
 					img 
-						width 50%
-
+						width 75px
+						height 75px
       
  
 </style>

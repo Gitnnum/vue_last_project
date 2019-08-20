@@ -6,6 +6,8 @@ import Search from '../pages/Search/Search.vue'
 import Hotfind from '../pages/Hotfind/Hotfind.vue'
 import UserCenter from '../pages/UserCenter/UserCenter.vue'
 import CategoryItem from '../pages/Category/CategoryItem/CategoryItem.vue'
+import '../store'
+import store from '../store';
 export default [
     {
         path:'/home',
@@ -15,18 +17,26 @@ export default [
         }
     },
     {
-        path:'/category',
-        component: Category,
-        children:[
-            {
-							path:'/category/detial/:id',
-							component: CategoryItem
-            }
-        ],
-        meta:{
-            showFooter:true
-        }
-    },
+			path:'/category',
+			component: Category,
+			children:[
+				{
+					path:'/category/detial/:id',
+					component: CategoryItem,
+					meta:{
+						showFooter:true
+					}
+				}
+				// {
+				// 	path:'/category',
+				// 	// redirect:'/category/detial/'+(store.categoryArr ? store.categoryArr[0].id : '')
+				// 	redirect:'/category/detial/1005000'
+				// },
+			],
+			meta:{
+					showFooter:true
+			}
+		},
     {
         path:'/personal',
         component: Personal

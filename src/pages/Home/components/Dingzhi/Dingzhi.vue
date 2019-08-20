@@ -2,83 +2,15 @@
 	<div class="swiper-container" id="c1">
 		<div class="title">私人定制</div>
 		<div class="swiper-wrapper">
-				<div class="swiper-slide">
+				<div class="swiper-slide" v-for="(slideItem,index) in totalArr" :key="index">
 					<ul class="shopList">
-						<li class="shopListItem">
+						<li class="shopListItem" v-for="(liItem,index) in slideItem" :key="index">
 							<a href="javaScript:;">
-								<img src="/static/images/私人定制.png" alt="">
+								<img :src="liItem.listPicUrl" alt="">
 								<div class="info">
-									<span class="words">泰国制造，镜片优选</span>
-									<span class="price">￥12</span>
+									<span class="words">{{liItem.name}}</span>
+									<span class="price">￥{{liItem.retailPrice}}</span>
 								</div>
-							</a>
-							<a href="javaScript:;">
-								<img src="/static/images/私人定制.png" alt="">
-								<div class="info">
-									<span class="words">泰国制造，镜片优选</span>
-									<span class="price">￥12</span>
-								</div>
-							</a>
-							<a href="javaScript:;">
-								<img src="/static/images/私人定制.png" alt="">
-								<div class="info">
-									<span class="words">泰国制造，镜片优选</span>
-									<span class="price">￥12</span>
-								</div>       
-							</a>
-						</li>
-					</ul>
-				</div>
-				<div class="swiper-slide">
-					<ul class="shopList">
-						<li class="shopListItem">
-							<a href="javaScript:;">
-								<img src="/static/images/私人定制.png" alt="">
-								<div class="info">
-									<span class="words">泰国制造，镜片优选</span>
-									<span class="price">￥12</span>
-								</div>
-							</a>
-							<a href="javaScript:;">
-								<img src="/static/images/私人定制.png" alt="">
-								<div class="info">
-									<span class="words">泰国制造，镜片优选</span>
-									<span class="price">￥12</span>
-								</div>
-							</a>
-							<a href="javaScript:;">
-								<img src="/static/images/私人定制.png" alt="">
-								<div class="info">
-									<span class="words">泰国制造，镜片优选</span>
-									<span class="price">￥12</span>
-								</div>       
-							</a>
-						</li>
-					</ul>
-				</div>
-				<div class="swiper-slide">
-					<ul class="shopList">
-						<li class="shopListItem">
-							<a href="javaScript:;">
-								<img src="/static/images/私人定制.png" alt="">
-								<div class="info">
-									<span class="words">泰国制造，镜片优选</span>
-									<span class="price">￥12</span>
-								</div>
-							</a>
-							<a href="javaScript:;">
-								<img src="/static/images/私人定制.png" alt="">
-								<div class="info">
-									<span class="words">泰国制造，镜片优选</span>
-									<span class="price">￥12</span>
-								</div>
-							</a>
-							<a href="javaScript:;">
-								<img src="/static/images/私人定制.png" alt="">
-								<div class="info">
-									<span class="words">泰国制造，镜片优选</span>
-									<span class="price">￥12</span>
-								</div>       
 							</a>
 						</li>
 					</ul>
@@ -91,19 +23,39 @@
 
 <script type="text/ecmascript-6">
 	import Swiper from 'swiper'
-  import 'swiper/dist/css/swiper.min.css'   
-  export default {
-		mounted () {
-			this.$nextTick(()=>{
-				var mySwiper = new Swiper ('#c1', {
-					loop: true, // 循环模式选项
-					
-					// 如果需要分页器
-					pagination: {
-						el: '.swiper-pagination',
-					}
+	import 'swiper/dist/css/swiper.min.css'
+	import { mapState, mapGetters } from 'vuex'   
+	export default {//
+		data () {
+			return {
+
+			}
+		},
+		computed:{
+			...mapState({
+				homeData: state => state.home.homeData
+			}),
+			//私人定制  计算属性
+			...mapGetters(['totalArr'])  
+			// personalShop () {
+			// 	if(this.homeData){
+			// 		return this.homeData.personalShop
+			// 	}
+			// }
+		},
+		watch:{
+			totalArr () {
+				this.$nextTick(()=>{
+					var mySwiper = new Swiper ('#c1', {
+						loop: true, // 循环模式选项
+						
+						// 如果需要分页器
+						pagination: {
+							el: '.swiper-pagination',
+						}
+					})
 				})
-			})
+			}
 		}
   }
 </script>
@@ -124,8 +76,11 @@
 				width 100%
 				overflow hidden
 				.shopList
+					padding-left 8px
+					display flex
 					.shopListItem
 						display flex
+						margin-right 6px
 						a
 							width 33.3%
 							img
@@ -133,7 +88,8 @@
 								height 108px
 								background #f5f5f5
 							.info
-								height 30px
+								width 108px
+								height 50px
 								font-size 12px
 								color #333
 								.price

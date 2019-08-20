@@ -100,8 +100,7 @@
       })
     },
     mounted () {
-      // 分发获取分类信息
-      this.$store.dispatch('getCategory')
+      
 
       var mySwiper = new Swiper ('.swiper-container', {
         loop: true, // 循环模式选项
@@ -127,6 +126,15 @@
       saveCurrent (index) {
         this.currentIndex = index
       }
+    },
+    beforeRouteEnter (to,from,next) {
+      next(component => {
+        // '/category/detial/'+(store.categoryArr ? store.categoryArr[0].id : '')
+        console.log(component.categoryArr)
+        setTimeout(()=>{
+          component.$router.replace('/category/detial/'+(component.categoryArr ? component.categoryArr[0].id : ''))
+        },300)
+      })
     }
   }
 </script>

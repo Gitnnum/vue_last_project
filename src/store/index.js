@@ -6,6 +6,7 @@ import mutations from './mutations'
 import getters from './getters'
 
 import category from './modules/category'
+import home from './modules/home'
 Vue.use(Vuex)
 export default new Vuex.Store({
     mode:"history",
@@ -13,6 +14,7 @@ export default new Vuex.Store({
     mutations,
     getters,
     modules:{
-        category // 分类子状态
+        category, // 分类子状态
+        home
     }
 })

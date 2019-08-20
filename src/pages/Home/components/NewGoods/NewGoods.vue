@@ -4,58 +4,13 @@
 			<span>新品首发</span>
 			<span class="more">更多></span>
 		</div>
-		<ul class="shopList">
-			<li class="shopListItem">
+		<ul class="shopList" v-if="newItemList">
+			<li class="shopListItem" v-for="(item,index) in newItemList" :key="index">
 				<a href="javaScript:;">
-					<img src="/static/images/私人定制.png" alt="">
+					<img :src="item.primaryPicUrl" alt="">
 					<div class="info">
-						<span class="words">泰国制造，镜片优选</span>
-						<span class="price">￥12</span>
-					</div>
-				</a>
-			</li>
-			<li class="shopListItem">
-				<a href="javaScript:;">
-					<img src="/static/images/私人定制.png" alt="">
-					<div class="info">
-						<span class="words">泰国制造，镜片优选</span>
-						<span class="price">￥12</span>
-					</div>
-				</a>
-			</li>
-			<li class="shopListItem">
-				<a href="javaScript:;">
-					<img src="/static/images/私人定制.png" alt="">
-					<div class="info">
-						<span class="words">泰国制造，镜片优选</span>
-						<span class="price">￥12</span>
-					</div>
-				</a>
-			</li>
-			<li class="shopListItem">
-				<a href="javaScript:;">
-					<img src="/static/images/私人定制.png" alt="">
-					<div class="info">
-						<span class="words">泰国制造，镜片优选</span>
-						<span class="price">￥12</span>
-					</div>
-				</a>
-			</li>
-			<li class="shopListItem">
-				<a href="javaScript:;">
-					<img src="/static/images/私人定制.png" alt="">
-					<div class="info">
-						<span class="words">泰国制造，镜片优选</span>
-						<span class="price">￥12</span>
-					</div>
-				</a>
-			</li>
-			<li class="shopListItem">
-				<a href="javaScript:;">
-					<img src="/static/images/私人定制.png" alt="">
-					<div class="info">
-						<span class="words">泰国制造，镜片优选</span>
-						<span class="price">￥12</span>
+						<span class="words">{{item.name.length >10 ?item.name.slice(0,10)+"..." : item.name}}</span>
+						<span class="price">￥{{item.counterPrice}}</span>
 					</div>
 				</a>
 			</li>
@@ -64,7 +19,11 @@
 </template>
 
 <script type="text/ecmascript-6">
+  import { mapGetters } from 'vuex'
   export default {
+		computed:{
+			...mapGetters(['newItemList'])
+		}
   }
 </script>
 
@@ -100,6 +59,8 @@
 					width 108px
 					background #F5F5F5
 				.info
+					width 100px
+					padding-top 5px
 					padding-left 4px
 					.price
 						font-size 12px

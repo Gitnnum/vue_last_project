@@ -1,64 +1,19 @@
 <template>
 	<div class="categoryModule">
 		<div class="bigImage">
-			<a href="javaScript:;">
-				<img src ="https://yanxuan.nosdn.127.net/874cc79fd5f7e13eac10e1dcc9fe6c92.jpg?imageView&thumbnail=750x0&quality=75"/>
+			<a href="javascript:;">
+				<img :src ="categoryModuleItem.titlePicUrl"/>
 			</a>
 		</div>
-		<div class="shopWrapper" ref="shopWrapper1">
+		<div  class="shopWrapper" :class="currentClass" ref="shopWrapper">
 			<ul class="shopList">
-				<li class="shopListItem">
-					<a href="javaScript:;">
-						<img src="https://yanxuan-item.nosdn.127.net/d9376c059ce15a774199e2cedc5a8d63.png?imageView&quality=65&thumbnail=330x330" alt="">
+				<li class="shopListItem" v-for="(itemL,index) in categoryModuleItem.itemList" :key="index">
+					<a href="javascript:;">
+						<img :src="itemL.listPicUrl" alt="">
 					</a>
 					<div class="info">
-							<span class="words">泰国制造，镜片优选</span>
-							<p class="price">￥12</p>
-					</div>
-				</li>
-				<li class="shopListItem">
-					<a href="javaScript:;">
-						<img src="https://yanxuan-item.nosdn.127.net/89ea5ccc1e8e09912b17c18005b6f704.png?imageView&quality=65&thumbnail=330x330" alt="">
-						<div class="info">
-							<span class="words">泰国制造，镜片优选</span>
-							<p class="price">￥12</p>
-						</div>
-					</a>
-				</li>
-				<li class="shopListItem">
-					<a href="javaScript:;">
-						<img src="https://yanxuan-item.nosdn.127.net/d9376c059ce15a774199e2cedc5a8d63.png?imageView&quality=65&thumbnail=330x330" alt="">
-					</a>
-					<div class="info">
-							<span class="words">泰国制造，镜片优选</span>
-							<p class="price">￥12</p>
-					</div>
-				</li>
-				<li class="shopListItem">
-					<a href="javaScript:;">
-						<img src="https://yanxuan-item.nosdn.127.net/89ea5ccc1e8e09912b17c18005b6f704.png?imageView&quality=65&thumbnail=330x330" alt="">
-					</a>
-					<div class="info">
-						<span class="words">泰国制造，镜片优选</span>
-						<p class="price">￥12</p>
-					</div>
-				</li>
-				<li class="shopListItem">
-					<a href="javaScript:;">
-						<img src="https://yanxuan-item.nosdn.127.net/d9376c059ce15a774199e2cedc5a8d63.png?imageView&quality=65&thumbnail=330x330" alt="">
-					</a>
-					<div class="info">
-							<span class="words">泰国制造，镜片优选</span>
-							<p class="price">￥12</p>
-					</div>
-				</li>
-				<li class="shopListItem">
-					<a href="javaScript:;">
-						<img src="https://yanxuan-item.nosdn.127.net/89ea5ccc1e8e09912b17c18005b6f704.png?imageView&quality=65&thumbnail=330x330" alt="">
-					</a>
-					<div class="info">
-						<span class="words">泰国制造，镜片优选</span>
-						<p class="price">￥12</p>
+							<span class="words">{{itemL.name.length >10 ?itemL.name.slice(0,15)+"..." : itemL.name}}</span>
+							<p class="price">￥{{itemL.retailPrice}}</p>
 					</div>
 				</li>
 				<li class="shopListItem">
@@ -76,9 +31,20 @@
 <script type="text/ecmascript-6">
 	import BScroll from 'better-scroll'
   export default {
-		mounted () {
+		props:{
+			categoryModuleItem: Object,
+			index: Number
+		},
+		computed:{
+			currentClass () {
+				return "shopWrapper"+this.index
+			}	
+		},
+		async mounted () {
+			await this.$store.dispatch('getHome')
 			this.$nextTick (()=>{
-				new BScroll(this.$refs.shopWrapper1,{
+				// console.log(this.$refs.shopWrapper1)
+				new BScroll("."+this.currentClass,{
 					click:true,
 					scrollX:true,
 					scrollY:false
@@ -120,6 +86,7 @@
 						width 108px
 						background #f4f4f4
 					.info
+						width 100px
 						padding-left 4px
 						.price
 							font-size 12px

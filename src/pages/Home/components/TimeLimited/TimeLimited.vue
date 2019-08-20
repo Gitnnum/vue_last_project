@@ -3,66 +3,21 @@
 		<div class="title">
 			<span>限时购</span>
 			<div class="time">
-				<span>00</span>
+				<span>{{cTimer | format-date('HH')}}</span>
 				<span>:</span>
-				<span>00</span>
+				<span>{{cTimer | format-date('mm')}}</span>
 				<span>:</span>
-				<span>00</span>
+				<span>{{cTimer | format-date('ss')}}</span>
 			</div>
 			<span class="more">更多></span>
 		</div>
-		<ul class="shopList">
-			<li class="shopListItem">
+		<ul class="shopList" v-if="flashSaleModule">
+			<li class="shopListItem"   v-for="(item,index) in flashSaleModule.itemList" :key="index">
 				<a href="javaScript:;">
-					<img src="/static/images/私人定制.png" alt="">
+					<img :src="item.picUrl" alt="">
 					<div class="info">
-						<span class="price">￥12</span>
-						<span class="oldPrice">￥11</span>
-					</div>
-				</a>
-			</li>
-			<li class="shopListItem">
-				<a href="javaScript:;">
-					<img src="/static/images/私人定制.png" alt="">
-					<div class="info">
-						<span class="price">￥12</span>
-						<span class="oldPrice">￥11</span>
-					</div>
-				</a>
-			</li>
-			<li class="shopListItem">
-				<a href="javaScript:;">
-					<img src="/static/images/私人定制.png" alt="">
-					<div class="info">
-						<span class="price">￥12</span>
-						<span class="oldPrice">￥11</span>
-					</div>
-				</a>
-			</li>
-			<li class="shopListItem">
-				<a href="javaScript:;">
-					<img src="/static/images/私人定制.png" alt="">
-					<div class="info">
-						<span class="price">￥12</span>
-						<span class="oldPrice">￥11</span>
-					</div>
-				</a>
-			</li>
-			<li class="shopListItem">
-				<a href="javaScript:;">
-					<img src="/static/images/私人定制.png" alt="">
-					<div class="info">
-						<span class="price">￥12</span>
-						<span class="oldPrice">￥11</span>
-					</div>
-				</a>
-			</li>
-			<li class="shopListItem">
-				<a href="javaScript:;">
-					<img src="/static/images/私人定制.png" alt="">
-					<div class="info">
-						<span class="price">￥12</span>
-						<span class="oldPrice">￥11</span>
+						<span class="price">￥{{item.activityPrice}}</span>
+						<del class="oldPrice">￥{{item.originPrice}}</del>
 					</div>
 				</a>
 			</li>
@@ -71,7 +26,30 @@
 </template>
 
 <script type="text/ecmascript-6">
+	import { mapGetters } from 'vuex'
   export default {
+		data () {
+			return {
+				cTimer: null
+			}
+		},
+		computed:{
+			...mapGetters(['flashSaleModule']),
+			timer (){
+				if(this.flashSaleModule){
+					return this.flashSaleModule.nextStartTime
+				}
+			}
+		},
+		mounted () {
+			this.cTimer = this.timer
+			let timeId = setInterval(()=>{
+				if(this.cTimer === 0){
+					clearInterval(timeId)
+				}
+				this.cTimer-=1000
+			},1000)
+		}
   }
 </script>
 

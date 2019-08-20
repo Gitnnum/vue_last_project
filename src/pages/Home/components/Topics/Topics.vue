@@ -6,32 +6,14 @@
 		</div>
 		<div class="container" ref="container" >
 			<ul class="topicList" >
-				<li class="topicItem">
+				<li class="topicItem" v-for="(item,index) in topicList" :key="index" >
 					<a href="javascript:;">
-						<img src="https://yanxuan.nosdn.127.net/d92e4fa96f4c65e3a3f135d430c459ec.jpg?imageView&thumbnail=575y322&enlarge=1&quality=75" alt="">
+						<img :src="item.itemPicUrl" alt="">
 					</a>
 					<div class="info">
-						<h4>直男们有救了！严选手把手教你, 送给女生的七夕怎么挑~</h4>
+						<h4>{{item.title}}</h4>
 					</div>
-					<p>女士精选礼物大赏</p>
-				</li>
-				<li class="topicItem">
-					<a href="javascript:;">
-						<img src="https://yanxuan.nosdn.127.net/bd2b2c7a026a9b1e00d2bae2907789c1.jpg?imageView&thumbnail=575y322&enlarge=1&quality=75" alt="">
-					</a>
-					<div class="info">
-						<h4>直男们有救了！严选手把手教你, 送给女生的七夕怎么挑~</h4>
-					</div>  
-					<p>女士精选礼物大赏</p>
-				</li>
-				<li class="topicItem">
-					<a href="javascript:;">
-						<img src="https://yanxuan.nosdn.127.net/3da981b031a4db90e21e54147a5fb863.jpg?imageView&thumbnail=575y322&enlarge=1&quality=75" alt="">
-					</a>
-					<div class="info">
-						<h4>每天在用的纸巾, 你会留意原料吗？原生木浆纸巾更安全~</h4>
-					</div>
-					<p>无需比对品质，只用挑选规格</p>
+					<p>{{item.subtitle}}</p>
 				</li>
 			</ul>
 		</div>
@@ -40,15 +22,21 @@
 
 <script type="text/ecmascript-6">
 	import BScroll from 'better-scroll'
+	import { mapGetters } from 'vuex'
   export default {
-		mounted () {
-			this.$nextTick(()=>{
-				new BScroll(this.$refs.container,{
-					click:true,
-					scrollX:true,
-					scrollY:false
+		computed:{
+			...mapGetters(['topicList'])
+		},
+		watch:{
+			topicList () {
+				this.$nextTick(()=>{
+					new BScroll(this.$refs.container,{
+						click:true,
+						scrollX:true,
+						scrollY:false
+					})
 				})
-			})
+			} 
 		}
 	}
 </script>

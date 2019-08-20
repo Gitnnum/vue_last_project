@@ -8,28 +8,28 @@
         </div>
         <div class="right">
           <i class="iconfont icon-sousuo" @click="$router.push('/hotfind')"></i>
-          <i class="iconfont icon-gouwuche"></i>
+          <i class="iconfont icon-gouwuche" @click="$router.replace('/shopcart')"></i>
         </div>
       </div>
     </div>
     <!-- 登陆的首页 -->
-    <div class="login" v-show="isLoginMain">
+    <div class="login" v-show="isShow === 0">
       <div class="loginImg">
         <img src="//yanxuan.nosdn.127.net/bd139d2c42205f749cd4ab78fa3d6c60.png" alt="">
       </div>
       <div class="btn">
-        <button class="phone on">
-          <i class="iconfont icon-shouji"></i>
+        <button class="phone on" @click="isShow = 1">
+          <i class="iconfont icon-shouji" ></i>
           手机号快捷登录
         </button>
-        <button class="emil">
-          <i class="iconfont icon-duanxin"></i>
+        <button class="emil" @click="isShow = 2">
+          <i class="iconfont icon-duanxin" ></i>
           邮箱账号登录
         </button>
       </div>
     </div>
     <!-- 手机号登录 -->
-    <div class="loginPhone" v-show="isLoginByPhone">
+    <div class="loginPhone" v-show="isShow === 1">
       <div class="image">
         <img src="//yanxuan.nosdn.127.net/bd139d2c42205f749cd4ab78fa3d6c60.png" alt="">
       </div>
@@ -55,12 +55,12 @@
           <a href="javascript:;">《网易隐私政策》</a>
         </div>
       </div>
-      <div class="other">
+      <div class="other" @click="isShow = 0">
         其他登录方式>
       </div>
     </div>
     <!-- 邮箱登录 -->
-    <div class="loginEmil" v-show="isLoginByEmil">
+    <div class="loginEmil" v-show="isShow === 2">
       <div class="image">
         <img src="//yanxuan.nosdn.127.net/bd139d2c42205f749cd4ab78fa3d6c60.png" alt="">
       </div>
@@ -72,17 +72,17 @@
           <i class="iconfont icon-quxiao quxiao2"></i>
         </div>
         <div class="problem">
-          <span class="left">注册账号</span>
+          <span class="left" @click="isShow = 3">注册账号</span>
           <span class="right">忘记密码</span>
         </div>
         <button class="btnLogin">登录</button>
       </form>
-      <div class="other">
+      <div class="other" @click="isShow = 0">
         其他登录方式>
       </div>
     </div>
     <!-- 注册 -->
-    <div class="register" v-show="isRegister">
+    <div class="register" v-show="isShow === 3">
       <div class="image">
         <p>手机注册</p>
       </div>
@@ -117,12 +117,28 @@
   export default {
     data () {
       return {
-        isLoginMain:true,  //是否显示登陆的首页
-        isLoginByPhone:false, // 是否手机登录
-        isLoginByEmil:false, // 是否邮箱登录
-        isRegister: false // 是否注册
+        isShow:0
+        // isLoginMain:true,  //是否显示登陆的首页---0
+        // isLoginByPhone:false, // 是否手机登录----1
+        // isLoginByEmil:false, // 是否邮箱登录------2
+        // isRegister: false // 是否注册----------3
       }
-    }
+    },
+    // methods:{
+    //   checkOne () {
+    //     this.isLoginMain= !isLoginMain
+    //     this.isLoginByPhone = !isLoginByPhone
+    //   },
+    //   checkTwo () {
+    //     this.isLoginMain= !isLoginMain
+    //     this.isLoginByEmil = !isLoginByEmil
+    //   },
+    //   checkThree () {
+    //     this.isRegister= !isRegister
+    //     this.isLoginByEmil = !isLoginByEmil
+    //   }
+      
+    // }
   }
 </script>
 

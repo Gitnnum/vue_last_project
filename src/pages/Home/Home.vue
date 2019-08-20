@@ -1,63 +1,18 @@
 <template>
   <div id="homeContainer">
-    <div class="home_header">
-      <div class="header">
-        <a href="javaScript:;" class="logo">
-          <img src="/static/images/logo.png" alt="logo">
-        </a>
-        <div class="search">
-          <i class="iconfont icon-sousuo"></i>
-          <span>搜索商品，共21615款好物</span>
-        </div>
-        <button class="login">登录</button>
-      </div>
-      <div class="tabWrapper" ref="homeNav">
-        <ul class="nav" v-show="!isShow" >
-          <li class="active">推荐</li>
-          <li>居家生活</li>
-          <li>服饰鞋包</li>
-          <li>美食酒水</li>
-          <li>个人清洁</li>
-          <li>母婴亲子</li>
-          <li>运动旅行</li>
-          <li>数码家电</li>
-          <li>全球特色</li>
-        </ul>
-        <div class="all" v-show="isShow">全部频道</div>
-        <ul class="allList" v-show="isShow">
-          <li class="active">推荐</li>
-          <li>居家生活</li>
-          <li>服饰鞋包</li>
-          <li>美食酒水</li>
-          <li>个人清洁</li>
-          <li>母婴亲子</li>
-          <li>运动旅行</li>
-          <li>数码家电</li>
-          <li>全球特色</li>
-        </ul>
-        <div class="more" :class="{on:isShow}" @click="isShow = !isShow">
-            <div class="icon"><i class="iconfont icon-jiantou-copy-copy"></i> </div> 
-        </div>
-      </div>  
-    </div>
-    <div class="mask" v-show="isShow"></div>
-    
+    <!-- 头部在非路由组建里 -->
+    <HomeHeader ref="maskIsShow"></HomeHeader>
+    <!-- 轮播 -->
     <BannerLoop/>
+    <!-- 服务策略  -->
     <ul class="advantage">
-      <li>
+      <li v-for="(policyDesc,index) in policyDescList" :key="index">
         <i class="iconfont icon-dunpai1"></i>
-        <span>网易自营品牌</span>
-      </li>
-      <li>
-        <i class="iconfont icon-airudiantubiaohuizhi-zhuanqu_yiwutong"></i>
-        <span>30天无忧退货</span>
-      </li>
-      <li>
-        <i class="iconfont icon-qianfenleishouye"></i>
-        <span>48小时快速退货</span>
+        <span>{{policyDesc.desc}}</span>
       </li>
     </ul>
     <div class="content">
+      <!-- 私人定制之上的结构 -->
       <First/>
 
       <!-- 私人定制 -->
@@ -76,7 +31,7 @@
       <Hot/>
 
       <!-- 品牌商制造商直供 -->
-      <Production/>
+      <!-- <Production/> -->
 
       <!-- 专题精选 -->
       <Topics/>
@@ -86,10 +41,7 @@
 
       <!-- 分类滑动模块 -->
       <div class="categoryWrap">
-        <CategoryModule ></CategoryModule>
-        <CategoryModule ></CategoryModule>
-        <CategoryModule ></CategoryModule>
-        <CategoryModule ></CategoryModule>
+        <CategoryModule v-for="(categoryModuleItem,index) in categoryModule" :key="index" :categoryModuleItem='categoryModuleItem' :index='index'></CategoryModule>
       </div>
     </div>
     <!-- 右侧固定定位 -->
@@ -123,18 +75,46 @@
   import Topics from './components/Topics/Topics'
   import ZhongChou from './components/ZhongChou/ZhongChou'
   import CategoryModule from './components/CategoryModule/CategoryModule'
+  import HomeHeader from '../../components/HomeHeader/HomeHeader'
   
 
-  import BScroll from 'better-scroll'
+  
   import Swiper from 'swiper'
-  import 'swiper/dist/css/swiper.min.css'    
+  import 'swiper/dist/css/swiper.min.css' 
+  import { mapState } from 'vuex'   
   export default {
     data () {
       return {
-        isShow: false
+        currentIndex:0 // 存储当前的导航index值
       }
     },
-    components:{
+    mounted () {
+      // 分发获取home的mock数据请求
+      this.$store.dispatch('getHome')
+    },
+    computed:{
+      ...mapState({
+        homeData: state => state.home.homeData
+      }),
+      kingKongModule () {
+        if(this.homeData){
+          return this.homeData.kingKongModule
+        }
+      },
+      //服务策略
+      policyDescList () {
+        if(this.homeData){
+         return this.homeData.policyDescList
+        }
+      },
+      //最后的一个模板，大图加滑动列表categoryModule
+      categoryModule () {
+        if(this.homeData){
+          return this.homeData.categoryModule
+        }
+      }
+    },
+    components:{  // 注册组件
       BannerLoop,
       First,
       Dingzhi,
@@ -145,16 +125,8 @@
       Topics,
       ZhongChou,
       CategoryModule,
-      Production
-    },
-    mounted () {
-      this.$nextTick(()=>{
-        new BScroll(this.$refs.homeNav,{
-          click:true,
-          scrollX:true,
-          scrollY:false
-        })
-      })
+      Production,
+      HomeHeader
     }
   }
 </script>
@@ -162,108 +134,6 @@
 <style lang="stylus" rel="stylesheet/stylus" scoped>
   #homeContainer
     padding-bottom 50px
-    .home_header
-      width 100%
-      position fixed
-      top 0px
-      left 0px
-      background #ffffff
-      z-index 99      
-      padding 2px 2px
-      .header
-        width 100%
-        display flex
-        justify-content space-around
-        align-items center
-        margin 5px 0px
-        .logo
-          width 70px
-          height 20px
-          img 
-            width 70px
-            height 20px
-        .search
-          padding 5px 15px
-          height 20px
-          font-size 14px
-          color #666
-          line-height 20px
-          background #eeeeee
-          border-radius 4px
-          .icon-sousuo
-            font-weight bold
-        .login
-          height 20px
-          line-height 16px
-          font-size 12px
-          color #b4282d
-          border 1px solid #b4282d
-          border-radius 4px
-          background-color transparent
-          padding 2px 5px
-      .tabWrapper
-        display flex
-        width 100%
-        .nav
-          display flex
-          li
-            white-space nowrap
-            line-height 30px
-            font-size 14px
-            color #333
-            padding 0 8px
-            margin-left 10px
-            border-bottom 2px solid rgba(0,0,0,0)
-            &.active
-              color #b4282d
-              border-color #b4282d
-        .all
-          padding-left 10px
-          font-size 14px
-          color #333
-          height 32px
-          line-height: 32px;
-        .allList
-          background #fff
-          position: absolute;
-          top: 75px;
-          left: 0px;
-          display flex
-          flex-wrap wrap
-          li
-            width 75px
-            height 28px
-            line-height 28px
-            text-align center
-            border 1px solid #CCC
-            font-size 12px
-            margin-left 15px
-            margin-bottom 10px
-            background: #FAFAFA;
-            &.active
-              border-color #b4282d
-              color #b4282d
-        .more
-          position absolute
-          right 0px
-          top 40px
-          width 60px
-          height 30px
-          background #fff
-          text-align center
-          .icon
-            transition all 0.5s
-          &.on
-            .icon
-              transform rotate(180deg)       
-    .mask
-      position: fixed;
-      z-index: 1
-      top: 0
-      left: 0
-      right: 0
-      bottom: 0
-      background rgba(0,0,0,.5)
     .advantage
       display flex
       padding 10px

@@ -15,6 +15,9 @@ import store from './store'
 //引入mock模块
 import './mock/mock-server.js'
 
+//引入filter全局过滤器
+import './filter'
+
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
