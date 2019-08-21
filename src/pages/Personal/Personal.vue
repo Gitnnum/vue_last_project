@@ -124,21 +124,6 @@
         // isRegister: false // 是否注册----------3
       }
     },
-    // methods:{
-    //   checkOne () {
-    //     this.isLoginMain= !isLoginMain
-    //     this.isLoginByPhone = !isLoginByPhone
-    //   },
-    //   checkTwo () {
-    //     this.isLoginMain= !isLoginMain
-    //     this.isLoginByEmil = !isLoginByEmil
-    //   },
-    //   checkThree () {
-    //     this.isRegister= !isRegister
-    //     this.isLoginByEmil = !isLoginByEmil
-    //   }
-      
-    // }
   }
 </script>
 

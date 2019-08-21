@@ -46,7 +46,7 @@
 			}
 		},
 		watch: {
-			subCateList () {
+			categoryArr () {
 				this.$nextTick(()=>{
 					new BScorll(this.$refs.listWrap,{
 						click:true,
@@ -62,7 +62,7 @@
 <style lang="stylus" rel="stylesheet/stylus" scoped>
 	.content
 		padding-right 20px
-		width 75%
+		width 77%
 		.swiper-container
 			.swiper-wrapper
 				.swiper-slide
@@ -76,6 +76,7 @@
 				background #ffffff
 		.listWrap
 			height 80%
+			width 100%
 			.list
 				padding-left 10px
 				display flex

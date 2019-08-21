@@ -4,11 +4,12 @@
       <i class="iconfont icon-shouye1"></i>
       <span>首页</span>
     </a>
-    <a href="javascript:;" @click="$router.replace('/category')" v-if="categoryArr[0]" :class="{on:$route.path === '/category/detial/'+categoryArr[0].id}">
+    <a href="javascript:;" @click="$router.replace('/category')" :class="{on:new RegExp('/category/detial/').test($route.path)}">
       <i class="iconfont icon-icon"></i>
       <span>分类</span>
     </a>
-    <a href="javascript:;" @click="$router.replace('/search')" :class="{on:$route.path === '/search'}">
+    <!-- $route.path === '/search/topic/0' -->
+    <a href="javascript:;" @click="$router.replace('/search')" :class="{on:new RegExp('/search/topic/').test($route.path)}">
       <i class="iconfont icon-tupian"></i>
       <span>
         识物

@@ -30,26 +30,29 @@
   export default {
 		data () {
 			return {
-				cTimer: null
+				cTimer: 0
 			}
 		},
 		computed:{
 			...mapGetters(['flashSaleModule']),
 			timer (){
 				if(this.flashSaleModule){
-					return this.flashSaleModule.nextStartTime
+					return this.flashSaleModule.nextStartTime*1
 				}
 			}
 		},
 		mounted () {
-			this.cTimer = this.timer
-			let timeId = setInterval(()=>{
-				if(this.cTimer === 0){
-					clearInterval(timeId)
-				}
-				this.cTimer-=1000
-			},1000)
-		}
+			setTimeout(()=>{
+				this.cTimer = this.timer
+				console.log(this.timer)
+				let timerId = setInterval(()=>{
+					if(this.cTimer === 0){
+						clearInterval(timeId)			
+					}
+					this.cTimer-=1000
+				},1000)
+			},300)
+			}
   }
 </script>
 

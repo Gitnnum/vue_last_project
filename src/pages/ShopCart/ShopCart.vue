@@ -22,7 +22,7 @@
       <img src="http://yanxuan-static.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/noCart-d6193bd6e4.png" alt="">
       <p>去添加点儿神魔吧</p>
     </div>
-    <button class="btn">登录</button>
+    <button class="btn" @click="$router.replace('/personal')">登录</button>
   </div>
 </template>
 

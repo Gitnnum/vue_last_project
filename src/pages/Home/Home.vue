@@ -19,7 +19,9 @@
       <Dingzhi/>
 
       <!-- 限时购 -->
-      <TimeLimited/>
+      <keep-alive>
+         <TimeLimited/>
+      </keep-alive>
 
       <!-- 新品首发 -->
       <NewGoods></NewGoods>

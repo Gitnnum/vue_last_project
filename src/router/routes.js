@@ -6,8 +6,10 @@ import Search from '../pages/Search/Search.vue'
 import Hotfind from '../pages/Hotfind/Hotfind.vue'
 import UserCenter from '../pages/UserCenter/UserCenter.vue'
 import CategoryItem from '../pages/Category/CategoryItem/CategoryItem.vue'
+import Topic from '../pages/Search/pages/Topic/Topic.vue'
+import Expert from '../pages/Search/pages/Expert/Expert.vue'
 import '../store'
-import store from '../store';
+
 export default [
     {
         path:'/home',
@@ -57,7 +59,24 @@ export default [
         component: Search,
         meta:{
             showFooter:true
-        }
+				},
+				children:[
+					{
+						path:'/search/topic/:index',
+						component:Topic,
+						meta:{
+							showFooter:true
+						}
+					},
+					{
+						path:'/search/expert',
+						component:Expert
+					},
+					{
+						path:'/search',
+						redirect:'/search/topic/0'
+					},
+				]
     },
     {
         path:'/usercenter',

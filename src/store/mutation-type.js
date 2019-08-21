@@ -1,2 +1,7 @@
 export const RECEIVE_CATEGORY = 'receive_category' 
 export const RECEIVE_HOME = 'receive_home' 
+export const RECEIVE_HOTWORDS = 'receive_hotwords'
+export const RECEIVE_HOTINIT = 'receive_hotinit'
+export const RECEIVE_SEATCHTAB = 'receive_searchtab'
+export const RECEIVE_RECOMMENT = 'receive_recomment'
+export const RECEIVE_RECMANUAL  = 'receive_recmanual'
