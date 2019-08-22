@@ -5,3 +5,5 @@ export const RECEIVE_HOTINIT = 'receive_hotinit'
 export const RECEIVE_SEATCHTAB = 'receive_searchtab'
 export const RECEIVE_RECOMMENT = 'receive_recomment'
 export const RECEIVE_RECMANUAL  = 'receive_recmanual'
+export const RECEIVE_SHOWORDER = "receive_showorder"
+export const RECEIVE_SHOWORDERBOTTOM = "receive_showorder_bottom"

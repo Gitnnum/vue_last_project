@@ -1,9 +1,11 @@
-import { reqSearchTab,reqRecomment,reqRecManual } from '../../api'
-import { RECEIVE_SEATCHTAB, RECEIVE_RECOMMENT ,RECEIVE_RECMANUAL} from '../mutation-type'
+import { reqSearchTab,reqRecomment,reqRecManual,reqShowOrder, reqComment } from '../../api'
+import { RECEIVE_SEATCHTAB, RECEIVE_RECOMMENT ,RECEIVE_RECMANUAL, RECEIVE_SHOWORDER, RECEIVE_SHOWORDERBOTTOM} from '../mutation-type'
 const state = {
 	searchTab : [],//头部tab导航栏
 	recommment :{},//
-	recManual : []//推荐数据
+	recManual : [],//推荐数据
+	showOrder : {},//晒单数据 拉面
+	showOrderInfo : {}////晒单数据 详情
 }
 const mutations = {
 	[RECEIVE_SEATCHTAB] (state, searchTab) {
@@ -18,6 +20,12 @@ const mutations = {
 	},
 	[RECEIVE_RECMANUAL] (state,recManual) {
 		state.recManual = recManual
+	},
+	[RECEIVE_SHOWORDER] (state, showOrder) {
+		state.showOrder = showOrder
+	},
+	[RECEIVE_SHOWORDERBOTTOM] (state, showOrderInfo) {
+		state.showOrderInfo = showOrderInfo
 	}
 }
 const actions = {
@@ -45,7 +53,25 @@ const actions = {
 			let recManual = response.data.data
 			commit(RECEIVE_RECMANUAL,recManual)
 		}
-	}
+	},
+	//晒单数据reqShowOrder
+	async getShowOrder({ commit },id=102) {
+		const response = await reqShowOrder(id)
+		console.log(response.data)
+		if(response.data.code === '200'){
+			let showOrder = response.data.data
+			commit(RECEIVE_SHOWORDER,showOrder)
+		}
+	},
+	//晒单数据reqComment
+	async getComment({ commit },{page,size,type}) {
+		const response = await reqComment(page,size,type)
+		console.log(response.data)
+		if(response.data.code === '200'){
+			let showOrderInfo = response.data.data
+			commit(RECEIVE_SHOWORDERBOTTOM,showOrderInfo)
+		}
+	},
 }
 const getters = {
     

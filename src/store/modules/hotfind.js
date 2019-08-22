@@ -26,7 +26,7 @@ const actions = {
 		let result = response.data
 		console.log(result)
 		if(result.code === '200'){
-			let hotInit = result.data.defaultKeywords
+			let hotInit = result.data
 			commit( RECEIVE_HOTINIT, hotInit )
 		}
 	}

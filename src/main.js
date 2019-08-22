@@ -18,6 +18,9 @@ import './mock/mock-server.js'
 //引入filter全局过滤器
 import './filter'
 
+//引入mint-ui样式
+import 'mint-ui/lib/style.css'
+
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

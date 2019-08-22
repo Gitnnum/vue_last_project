@@ -3,7 +3,7 @@
       <div class="header">
 				<div class="find">
 						<i class="iconfont icon-sousuo"></i>
-						<input type="text" placeholder="硅藻土浴室地垫 直降29元" v-model="keywordPrefix" @keyup="toFind">
+						<input type="text" :placeholder="hotInit.defaultKeyword.keyword" v-model="keywordPrefix" @keyup="toFind">
 				</div>
 				<span class="quxiao" @click="$router.back()">取消</span>
 				<div class="result_show" v-show="keywordPrefix" >
@@ -16,8 +16,8 @@
       </div>
       <div class="findlist">
 				<span class="title">热门搜索</span>
-				<ul class="nav">
-						<li class="navItem" v-for="(item,index) in hotInit" :key="index">{{item.keyword}}</li>
+				<ul class="nav" >
+						<li class="navItem" :class="{on:item.keyword === hotInit.defaultKeyword.keyword}" v-for="(item,index) in hotInit.defaultKeywords" :key="index">{{item.keyword}}</li>
 				</ul>
       </div>
   </div>
@@ -136,12 +136,13 @@
 				flex-wrap wrap
 				.navItem
 					font-size 12px
-					padding: .25rem;
-					margin-right: .22667rem;
-					margin-bottom: .12667rem;
-					line-height: .31333rem;
-					border: 1px solid #999;
-					border-radius: 3px;
+					padding .25rem;
+					margin-right .22667rem;
+					margin-bottom .12667rem;
+					line-height .31333rem;
+					border 1px solid #999;
+					border-radius 3px;
 					&.on
-						border: 1px solid red;
+						border 1px solid red;
+						color red
 </style>

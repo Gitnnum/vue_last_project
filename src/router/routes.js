@@ -8,6 +8,8 @@ import UserCenter from '../pages/UserCenter/UserCenter.vue'
 import CategoryItem from '../pages/Category/CategoryItem/CategoryItem.vue'
 import Topic from '../pages/Search/pages/Topic/Topic.vue'
 import Expert from '../pages/Search/pages/Expert/Expert.vue'
+import Phone from '../pages/Personal/components/Phone/Phone.vue'
+import Emli from '../pages/Personal/components/Emil/Emil.vue'
 import '../store'
 
 export default [
@@ -41,8 +43,16 @@ export default [
 		},
     {
         path:'/personal',
-        component: Personal
-    },
+				component: Personal,
+		},
+		{
+			path:'/phone',
+			component: Phone
+		},
+		{
+			path:'/emil',
+			component: Emli
+		},
     {
         path:'/hotfind',
         component: Hotfind

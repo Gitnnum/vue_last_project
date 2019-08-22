@@ -4,7 +4,7 @@
       <div class="header">
         <i class="iconfont icon-shouye1"></i>
         <div class="find">
-          <span :class="{on:$route.path === '/search/topic/0'}" >
+          <span :class="{on: new RegExp('/search/topic').test($route.path)}" >
           <router-link to="/search/topic/0">发现</router-link>
           </span>
           <span :class="{on:$route.path === '/search/expert'}">

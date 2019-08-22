@@ -32,3 +32,20 @@ export const reqRecomment = (page,size) => ajax.get(BASE+'/topic/v1/find/recAuto
         size
     }
 })
+
+//晒单数据头部  https://m.you.163.com/topic/v1/look/getCollection.json?id=102
+export const reqShowOrder = (id) => ajax({
+    url:BASE+'/topic/v1/look/getCollection.json',
+    params:{
+        id
+    }
+})
+//晒单评论数据  getList.json  http://m.you.163.com/topic/v1/look/getList.json?id=9&size=2&type=1|2|3
+//                           http://localhost:8080/api/topic/v1/find/getList.json?page=1&size=20&type=2
+export const reqComment = (page,size,type) => ajax.get(BASE+'/topic/v1/look/getList.json',{
+    params:{
+        page,
+        size,
+        type
+    }
+})
