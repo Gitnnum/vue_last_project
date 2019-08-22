@@ -21,6 +21,17 @@ import './filter'
 //引入mint-ui样式
 import 'mint-ui/lib/style.css'
 
+//全局注册slot
+import HeaderSlot from './components/Homesolt/Homesolt.vue'
+Vue.component('HeaderSlot',HeaderSlot)
+
+//引入图片懒加载
+import loading from './common/images/loading.gif'
+import VueLazyLoad from 'vue-lazyload'
+Vue.use(VueLazyLoad,{
+  loading
+})
+
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

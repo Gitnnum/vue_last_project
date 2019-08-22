@@ -1,9 +1,17 @@
-import Home from '../pages/Home/Home.vue'
-import Category from '../pages/Category/Category.vue'
-import Personal from '../pages/Personal/Personal.vue'
-import ShopCart from '../pages/ShopCart/ShopCart.vue'
-import Search from '../pages/Search/Search.vue'
-import Hotfind from '../pages/Hotfind/Hotfind.vue'
+// import Home from '../pages/Home/Home.vue'
+const Home = () =>import('../pages/Home/Home.vue')
+// import Category from '../pages/Category/Category.vue'
+const Category = () =>import('../pages/Category/Category.vue')
+// import Personal from '../pages/Personal/Personal.vue'
+const Personal = () =>import('../pages/Personal/Personal.vue')
+// import ShopCart from '../pages/ShopCart/ShopCart.vue'
+const ShopCart = () =>import('../pages/ShopCart/ShopCart.vue')
+// import Search from '../pages/Search/Search.vue'
+const Search = () =>import('../pages/Search/Search.vue')
+// import Hotfind from '../pages/Hotfind/Hotfind.vue'
+const Hotfind = () =>import('../pages/Hotfind/Hotfind.vue')
+
+
 import UserCenter from '../pages/UserCenter/UserCenter.vue'
 import CategoryItem from '../pages/Category/CategoryItem/CategoryItem.vue'
 import Topic from '../pages/Search/pages/Topic/Topic.vue'

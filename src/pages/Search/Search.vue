@@ -1,21 +1,14 @@
 <template>
   <div class="searchContainer">
     <div class="seaech_header">
-      <div class="header">
-        <i class="iconfont icon-shouye1"></i>
-        <div class="find">
-          <span :class="{on: new RegExp('/search/topic').test($route.path)}" >
-          <router-link to="/search/topic/0">发现</router-link>
-          </span>
-          <span :class="{on:$route.path === '/search/expert'}">
-          <router-link to="/search/expert">甄选家</router-link>
-          </span>
-        </div>
-        <div class="right">
-          <i class="iconfont icon-sousuo" @click="$router.push('/hotfind')"></i>
-          <i class="iconfont icon-gouwuche"></i>
-        </div>
-      </div>
+      <HeaderSlot>
+        <span slot="faxian" :class="{on: new RegExp('/search/topic').test($route.path)}" >
+        <router-link to="/search/topic/0">发现</router-link>
+        </span>
+        <span slot="zhenxuanjia" :class="{on:$route.path === '/search/expert'}">
+        <router-link to="/search/expert">甄选家</router-link>
+        </span>
+      </HeaderSlot>
       <div class="tabWrapper" ref="searchNav" v-show="$route.path !== '/search/expert'">
         <ul class="nav" >
           <li :class="{active:searchTab[currentIndex] === tab}" v-for="(tab,index) in searchTab" :key="index" 
@@ -106,38 +99,22 @@
       background #fafafa
       z-index 99      
       padding 2px 2px
-      .header
-        width 100%
-        display flex
-        justify-content space-around
-        align-items center
-        margin 10px 0px
-        .iconfont
-          font-size 28px
-        .find
-          span 
-            font-size 14px
-            &.on
-              a
-                font-size 20px
-                color #b4282d
-                font-weight bold
       .tabWrapper
+        display flex
+        width 100%
+        .nav
           display flex
-          width 100%
-          .nav
-            display flex
-            li
-              white-space nowrap
-              line-height 30px
-              font-size 14px
-              color #333
-              padding 0 8px
-              margin-left 10px
-              border-bottom 2px solid rgba(0,0,0,0)
-              &.active
-                color #b4282d
-                border-color #b4282d
+          li
+            white-space nowrap
+            line-height 30px
+            font-size 14px
+            color #333
+            padding 0 8px
+            margin-left 10px
+            border-bottom 2px solid rgba(0,0,0,0)
+            &.active
+              color #b4282d
+              border-color #b4282d
     .one
     width 100%
     height 120px

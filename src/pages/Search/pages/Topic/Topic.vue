@@ -20,7 +20,7 @@
 					</div>
 					<div class="img">
 						<a href="javascript:;">
-							<img :src="user.picUrl" alt="">
+							<img :src="user.picUrl" v-lazy="user.picUrl" alt="">
 						</a>
 					</div>
 					<div class="watch">
@@ -42,7 +42,7 @@
 					</div>
 					<div class="right">
 						<a href="javascript:;">
-							<img :src="user.picUrl" alt="">
+							<img :src="user.picUrl"  v-lazy="user.picUrl" alt="">
 						</a>
 					</div>
 				</div>
@@ -53,7 +53,7 @@
 		<div v-for="(item,nindex) in recommment.result" :key="nindex+Date.now()">
 			<div class="second" v-for="(user,lindex) in item.topics" :key="lindex-2+Date.now()+Date.now()">
 				<div class="user">
-					<img :src="user.avatar" alt="">
+					<img :src="user.avatar"  v-lazy="user.avatar"alt="">
 					<p>{{user.nickname}}</p>
 				</div>
 				<!-- 模板一 -->
@@ -63,7 +63,7 @@
 					</div>
 					<div class="img">
 						<a href="javascript:;">
-							<img :src="user.picUrl" alt="">
+							<img  v-lazy="user.picUrl" :src="user.picUrl" alt="">
 						</a>
 					</div>
 					<div class="watch">
@@ -85,7 +85,7 @@
 					</div>
 					<div class="right">
 						<a href="javascript:;">
-							<img :src="user.picUrl" alt="">
+							<img :src="user.picUrl" v-lazy="user.picUrl"alt="">
 						</a>
 					</div>
 				</div>

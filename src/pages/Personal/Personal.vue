@@ -1,16 +1,9 @@
 <template>
   <div class="loginWrap">
     <div class="login_header">
-      <div class="header">
-        <i class="iconfont icon-shouye1" @click="$router.replace('/home')"></i>
-        <div class="find">
-          <img src="/static/images/logo.png" alt="">
-        </div>
-        <div class="right">
-          <i class="iconfont icon-sousuo" @click="$router.push('/hotfind')"></i>
-          <i class="iconfont icon-gouwuche" @click="$router.replace('/shopcart')"></i>
-        </div>
-      </div>
+      <HeaderSlot>
+        <img slot="wangyitupian" src="/static/images/logo.png" alt="">
+      </HeaderSlot>
     </div>
     <!-- 登陆的首页 -->
     <div class="login" v-show="isShow">
@@ -29,11 +22,6 @@
         <button class="registerBtn" @click="isShow =!isShow">立即注册</button>
       </div>
     </div>
-    <!-- 手机号登录 -->
-    <!-- <Phone :isSho/w="isShow"></Phone> -->
-    <!-- 邮箱登录 -->
-    <!-- <Emil :isShow="isShow"></Emil> -->
-    <!-- 注册 -->
     <div class="register" v-show="!isShow">
       <div class="image">
         <p>手机注册</p>
@@ -97,21 +85,7 @@
   .loginWrap
     width 100%
     height 100%
-    background #ffffff
-    .login_header
-      .header
-        padding 0 10px
-        height 50px
-        background #fafafa
-        display flex
-        justify-content space-between
-        align-items center
-        .iconfont
-          font-size 28px
-        .find
-          img  
-            width 86px
-            height 27px
+    background #ffffff     
     .login
       background #F2F5F4
       .loginImg

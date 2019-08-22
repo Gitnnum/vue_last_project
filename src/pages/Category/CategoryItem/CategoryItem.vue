@@ -4,7 +4,7 @@
 			<div class="swiper-wrapper">
 				<div class="swiper-slide">
 					<a href="javaScript:;">
-						<img :src="currentArr.bannerUrl" alt="banner">
+						<img  :src="currentArr.bannerUrl" alt="banner">
 					</a>
 				</div>
 			</div>

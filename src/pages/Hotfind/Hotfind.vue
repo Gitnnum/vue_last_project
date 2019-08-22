@@ -1,7 +1,7 @@
 <template>
   <div class="hotFindContainer">
       <div class="header">
-				<div class="find">
+				<div class="find" v-if="hotInit.defaultKeyword">
 						<i class="iconfont icon-sousuo"></i>
 						<input type="text" :placeholder="hotInit.defaultKeyword.keyword" v-model="keywordPrefix" @keyup="toFind">
 				</div>
